@@ -79,11 +79,11 @@
 [v _Lcd_Write_Char Lcd_Write_Char `(v  1 e 1 0 ]
 "113
 [v _Lcd_Write_String Lcd_Write_String `(v  1 e 1 0 ]
-"33 C:\Users\jorda\OneDrive\Documentos\Denil_Estudios\MMJ\MMJ_Pic\Trainer2023_OneAllTesting\Trainer2023_OneAllTesting.X\LibreriasPIC/main_v2.c
+"45 C:\Users\jorda\OneDrive\Documentos\Denil_Estudios\MMJ\MMJ_Pic\Trainer2023_OneAllTesting\Trainer2023_OneAllTesting.X\LibreriasPIC/main_v2.c
 [v _main main `(i  1 e 2 0 ]
-"242
+"314
 [v _Message_Lcd_ok Message_Lcd_ok `(v  1 e 1 0 ]
-"248
+"320
 [v _Port_Init Port_Init `(v  1 e 1 0 ]
 "31 C:\Users\jorda\OneDrive\Documentos\Denil_Estudios\MMJ\MMJ_Pic\Trainer2023_OneAllTesting\Trainer2023_OneAllTesting.X\LibreriasPIC/spi_Master.c
 [v _SPI_ExchangeByte SPI_ExchangeByte `(uc  1 e 1 0 ]
@@ -116,13 +116,13 @@
 [v _ANSELCbits ANSELCbits `VES948  1 e 1 @3933 ]
 "361
 [v _ANSELD ANSELD `VEuc  1 e 1 @3934 ]
-[s S1397 . 1 `uc 1 ANSE0 1 0 :1:0 
+[s S1437 . 1 `uc 1 ANSE0 1 0 :1:0 
 `uc 1 ANSE1 1 0 :1:1 
 `uc 1 ANSE2 1 0 :1:2 
 ]
 "435
-[u S1401 . 1 `S1397 1 . 1 0 ]
-[v _ANSELEbits ANSELEbits `VES1401  1 e 1 @3935 ]
+[u S1441 . 1 `S1437 1 . 1 0 ]
+[v _ANSELEbits ANSELEbits `VES1441  1 e 1 @3935 ]
 "3053
 [v _PORTB PORTB `VEuc  1 e 1 @3969 ]
 [s S217 . 1 `uc 1 RB0 1 0 :1:0 
@@ -154,7 +154,7 @@
 [v _WPUB WPUB `VEuc  1 e 1 @3973 ]
 "3891
 [v _LATB LATB `VEuc  1 e 1 @3978 ]
-[s S1324 . 1 `uc 1 LATB0 1 0 :1:0 
+[s S1364 . 1 `uc 1 LATB0 1 0 :1:0 
 `uc 1 LATB1 1 0 :1:1 
 `uc 1 LATB2 1 0 :1:2 
 `uc 1 LATB3 1 0 :1:3 
@@ -164,7 +164,7 @@
 `uc 1 LATB7 1 0 :1:7 
 ]
 "3918
-[s S1333 . 1 `uc 1 LB0 1 0 :1:0 
+[s S1373 . 1 `uc 1 LB0 1 0 :1:0 
 `uc 1 LB1 1 0 :1:1 
 `uc 1 LB2 1 0 :1:2 
 `uc 1 LB3 1 0 :1:3 
@@ -173,21 +173,42 @@
 `uc 1 LB6 1 0 :1:6 
 `uc 1 LB7 1 0 :1:7 
 ]
-[u S1342 . 1 `S1324 1 . 1 0 `S1333 1 . 1 0 ]
-[v _LATBbits LATBbits `VES1342  1 e 1 @3978 ]
+[u S1382 . 1 `S1364 1 . 1 0 `S1373 1 . 1 0 ]
+[v _LATBbits LATBbits `VES1382  1 e 1 @3978 ]
+[s S1304 . 1 `uc 1 LATC0 1 0 :1:0 
+`uc 1 LATC1 1 0 :1:1 
+`uc 1 LATC2 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 LATC4 1 0 :1:4 
+`uc 1 LATC5 1 0 :1:5 
+`uc 1 LATC6 1 0 :1:6 
+`uc 1 LATC7 1 0 :1:7 
+]
+"4030
+[s S1313 . 1 `uc 1 LC0 1 0 :1:0 
+`uc 1 LC1 1 0 :1:1 
+`uc 1 LC2 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 LC4 1 0 :1:4 
+`uc 1 LC5 1 0 :1:5 
+`uc 1 LC6 1 0 :1:6 
+`uc 1 LC7 1 0 :1:7 
+]
+[u S1322 . 1 `S1304 1 . 1 0 `S1313 1 . 1 0 ]
+[v _LATCbits LATCbits `VES1322  1 e 1 @3979 ]
 "4105
 [v _LATD LATD `VEuc  1 e 1 @3980 ]
-[s S1304 . 1 `uc 1 LATE0 1 0 :1:0 
+[s S1344 . 1 `uc 1 LATE0 1 0 :1:0 
 `uc 1 LATE1 1 0 :1:1 
 `uc 1 LATE2 1 0 :1:2 
 ]
 "4234
-[s S1308 . 1 `uc 1 LE0 1 0 :1:0 
+[s S1348 . 1 `uc 1 LE0 1 0 :1:0 
 `uc 1 LE1 1 0 :1:1 
 `uc 1 LE2 1 0 :1:2 
 ]
-[u S1312 . 1 `S1304 1 . 1 0 `S1308 1 . 1 0 ]
-[v _LATEbits LATEbits `VES1312  1 e 1 @3981 ]
+[u S1352 . 1 `S1344 1 . 1 0 `S1348 1 . 1 0 ]
+[v _LATEbits LATEbits `VES1352  1 e 1 @3981 ]
 "4848
 [v _TRISB TRISB `VEuc  1 e 1 @3987 ]
 [s S208 . 1 `uc 1 TRISB0 1 0 :1:0 
@@ -223,19 +244,19 @@
 [v _TRISCbits TRISCbits `VES922  1 e 1 @3988 ]
 "5248
 [v _TRISD TRISD `VEuc  1 e 1 @3989 ]
-[s S1408 . 1 `uc 1 TRISE0 1 0 :1:0 
+[s S1448 . 1 `uc 1 TRISE0 1 0 :1:0 
 `uc 1 TRISE1 1 0 :1:1 
 `uc 1 TRISE2 1 0 :1:2 
 `uc 1 . 1 0 :4:3 
 `uc 1 WPUE3 1 0 :1:7 
 ]
 "5494
-[s S1414 . 1 `uc 1 RE0 1 0 :1:0 
+[s S1454 . 1 `uc 1 RE0 1 0 :1:0 
 `uc 1 RE1 1 0 :1:1 
 `uc 1 RE2 1 0 :1:2 
 ]
-[u S1418 . 1 `S1408 1 . 1 0 `S1414 1 . 1 0 ]
-[v _TRISEbits TRISEbits `VES1418  1 e 1 @3990 ]
+[u S1458 . 1 `S1448 1 . 1 0 `S1454 1 . 1 0 ]
+[v _TRISEbits TRISEbits `VES1458  1 e 1 @3990 ]
 [s S1097 . 1 `uc 1 TMR1IE 1 0 :1:0 
 `uc 1 TMR2IE 1 0 :1:1 
 `uc 1 CCP1IE 1 0 :1:2 
@@ -611,36 +632,38 @@
 [v _dbuf dbuf `[32]uc  1 s 32 dbuf ]
 "4 C:\Users\jorda\OneDrive\Documentos\Denil_Estudios\MMJ\MMJ_Pic\Trainer2023_OneAllTesting\Trainer2023_OneAllTesting.X\LibreriasPIC/keypad_4x4.c
 [v _Keypad4x4 Keypad4x4 `[4][4]uc  1 e 16 0 ]
-"24 C:\Users\jorda\OneDrive\Documentos\Denil_Estudios\MMJ\MMJ_Pic\Trainer2023_OneAllTesting\Trainer2023_OneAllTesting.X\LibreriasPIC/main_v2.c
+"33 C:\Users\jorda\OneDrive\Documentos\Denil_Estudios\MMJ\MMJ_Pic\Trainer2023_OneAllTesting\Trainer2023_OneAllTesting.X\LibreriasPIC/main_v2.c
+[v _AnodoComun7Seg AnodoComun7Seg `[10]uc  1 e 10 0 ]
+"36
 [v _ESTADO_APP ESTADO_APP `uc  1 e 1 0 ]
-"25
+"37
 [v _btn0_pushed btn0_pushed `a  1 e 1 0 ]
-"26
+"38
 [v _btn1_pushed btn1_pushed `a  1 e 1 0 ]
-"27
+"39
 [v _btn2_pushed btn2_pushed `a  1 e 1 0 ]
-"28
+"40
 [v _btn3_pushed btn3_pushed `a  1 e 1 0 ]
-"31
+"43
 [v _strButtons strButtons `[20]uc  1 e 20 0 ]
-"33
+"45
 [v _main main `(i  1 e 2 0 ]
 {
-"61
+"73
 [v main@j j `i  1 a 2 47 ]
-"60
+"72
 [v main@strI strI `[20]uc  1 a 20 25 ]
-"59
+"71
 [v main@i i `i  1 a 2 45 ]
-"239
+"311
 } 0
 "9 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nf_sprintf.c
 [v _sprintf sprintf `(i  1 e 2 0 ]
 {
-[u S1942 . 3 `*.2uc 1 buffer 3 0 `*.2Cuc 1 source 3 0 ]
+[u S2012 . 3 `*.2uc 1 buffer 3 0 `*.2Cuc 1 source 3 0 ]
 "13
-[s S1945 _IO_FILE 11 `S1942 1 . 3 0 `i 1 count 2 3 `[2]uc 1 ungetbuf 2 5 `i 1 ungetcnt 2 7 `i 1 limit 2 9 ]
-[v sprintf@f f `S1945  1 a 11 14 ]
+[s S2015 _IO_FILE 11 `S2012 1 . 3 0 `i 1 count 2 3 `[2]uc 1 ungetbuf 2 5 `i 1 ungetcnt 2 7 `i 1 limit 2 9 ]
+[v sprintf@f f `S2015  1 a 11 14 ]
 "12
 [v sprintf@ap ap `[1]*.39v  1 a 2 12 ]
 "9
@@ -653,9 +676,9 @@
 {
 "1523
 [v vfprintf@cfmt cfmt `*.25uc  1 a 2 87 ]
-[s S1977 _IO_FILE 0 ]
+[s S2047 _IO_FILE 0 ]
 "1520
-[v vfprintf@fp fp `*.39S1977  1 p 2 81 ]
+[v vfprintf@fp fp `*.39S2047  1 p 2 81 ]
 [v vfprintf@fmt fmt `*.25Cuc  1 p 2 83 ]
 [v vfprintf@ap ap `*.39*.39v  1 p 2 85 ]
 "1543
@@ -663,14 +686,14 @@
 "1007
 [v _vfpfcnvrt vfpfcnvrt `(v  1 s 1 vfpfcnvrt ]
 {
-[u S1995 . 8 `o 1 ll 8 0 `uo 1 llu 8 0 `*.2v 1 vp 3 0 `d 1 f 4 0 ]
+[u S2065 . 8 `o 1 ll 8 0 `uo 1 llu 8 0 `*.2v 1 vp 3 0 `d 1 f 4 0 ]
 "1016
-[v vfpfcnvrt@convarg convarg `S1995  1 a 8 71 ]
+[v vfpfcnvrt@convarg convarg `S2065  1 a 8 71 ]
 "1009
 [v vfpfcnvrt@cp cp `*.25uc  1 a 2 79 ]
-[s S1977 _IO_FILE 0 ]
+[s S2047 _IO_FILE 0 ]
 "1007
-[v vfpfcnvrt@fp fp `*.39S1977  1 p 2 63 ]
+[v vfpfcnvrt@fp fp `*.39S2047  1 p 2 63 ]
 [v vfpfcnvrt@fmt fmt `*.39*.25uc  1 p 2 65 ]
 [v vfpfcnvrt@ap ap `*.39*.39v  1 p 2 67 ]
 "1517
@@ -686,9 +709,9 @@
 [v dtoa@p p `i  1 a 2 48 ]
 "445
 [v dtoa@s s `uc  1 a 1 62 ]
-[s S1977 _IO_FILE 0 ]
+[s S2047 _IO_FILE 0 ]
 "443
-[v dtoa@fp fp `*.39S1977  1 p 2 28 ]
+[v dtoa@fp fp `*.39S2047  1 p 2 28 ]
 [v dtoa@d d `o  1 p 8 30 ]
 "502
 } 0
@@ -698,9 +721,9 @@
 "135
 [v pad@w w `i  1 a 2 26 ]
 [v pad@i i `i  1 a 2 24 ]
-[s S1977 _IO_FILE 0 ]
+[s S2047 _IO_FILE 0 ]
 "133
-[v pad@fp fp `*.39S1977  1 p 2 17 ]
+[v pad@fp fp `*.39S2047  1 p 2 17 ]
 [v pad@buf buf `*.39uc  1 p 2 19 ]
 [v pad@p p `i  1 p 2 21 ]
 "164
@@ -714,18 +737,18 @@
 [v fputs@c c `uc  1 a 1 14 ]
 "8
 [v fputs@s s `*.39Cuc  1 p 2 10 ]
-[u S1942 . 3 `*.2uc 1 buffer 3 0 `*.2Cuc 1 source 3 0 ]
-[s S1945 _IO_FILE 11 `S1942 1 . 3 0 `i 1 count 2 3 `[2]uc 1 ungetbuf 2 5 `i 1 ungetcnt 2 7 `i 1 limit 2 9 ]
-[v fputs@fp fp `*.39S1945  1 p 2 12 ]
+[u S2012 . 3 `*.2uc 1 buffer 3 0 `*.2Cuc 1 source 3 0 ]
+[s S2015 _IO_FILE 11 `S2012 1 . 3 0 `i 1 count 2 3 `[2]uc 1 ungetbuf 2 5 `i 1 ungetcnt 2 7 `i 1 limit 2 9 ]
+[v fputs@fp fp `*.39S2015  1 p 2 12 ]
 "19
 } 0
 "8 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nf_fputc.c
 [v _fputc fputc `(i  1 e 2 0 ]
 {
 [v fputc@c c `i  1 p 2 1 ]
-[u S1942 . 3 `*.2uc 1 buffer 3 0 `*.2Cuc 1 source 3 0 ]
-[s S1945 _IO_FILE 11 `S1942 1 . 3 0 `i 1 count 2 3 `[2]uc 1 ungetbuf 2 5 `i 1 ungetcnt 2 7 `i 1 limit 2 9 ]
-[v fputc@fp fp `*.39S1945  1 p 2 3 ]
+[u S2012 . 3 `*.2uc 1 buffer 3 0 `*.2Cuc 1 source 3 0 ]
+[s S2015 _IO_FILE 11 `S2012 1 . 3 0 `i 1 count 2 3 `[2]uc 1 ungetbuf 2 5 `i 1 ungetcnt 2 7 `i 1 limit 2 9 ]
+[v fputc@fp fp `*.39S2015  1 p 2 3 ]
 "24
 } 0
 "93 C:\Users\jorda\OneDrive\Documentos\Denil_Estudios\MMJ\MMJ_Pic\Trainer2023_OneAllTesting\Trainer2023_OneAllTesting.X\LibreriasPIC/usart.c
@@ -766,20 +789,20 @@
 [v ___aodiv@divisor divisor `o  1 p 8 8 ]
 "43
 } 0
-"248 C:\Users\jorda\OneDrive\Documentos\Denil_Estudios\MMJ\MMJ_Pic\Trainer2023_OneAllTesting\Trainer2023_OneAllTesting.X\LibreriasPIC/main_v2.c
+"320 C:\Users\jorda\OneDrive\Documentos\Denil_Estudios\MMJ\MMJ_Pic\Trainer2023_OneAllTesting\Trainer2023_OneAllTesting.X\LibreriasPIC/main_v2.c
 [v _Port_Init Port_Init `(v  1 e 1 0 ]
 {
-"278
+"361
 } 0
 "5 C:\Users\jorda\OneDrive\Documentos\Denil_Estudios\MMJ\MMJ_Pic\Trainer2023_OneAllTesting\Trainer2023_OneAllTesting.X\LibreriasPIC/configDevice.c
 [v _OSCILADOR_Init OSCILADOR_Init `(v  1 e 1 0 ]
 {
 "11
 } 0
-"242 C:\Users\jorda\OneDrive\Documentos\Denil_Estudios\MMJ\MMJ_Pic\Trainer2023_OneAllTesting\Trainer2023_OneAllTesting.X\LibreriasPIC/main_v2.c
+"314 C:\Users\jorda\OneDrive\Documentos\Denil_Estudios\MMJ\MMJ_Pic\Trainer2023_OneAllTesting\Trainer2023_OneAllTesting.X\LibreriasPIC/main_v2.c
 [v _Message_Lcd_ok Message_Lcd_ok `(v  1 e 1 0 ]
 {
-"245
+"317
 } 0
 "113 C:\Users\jorda\OneDrive\Documentos\Denil_Estudios\MMJ\MMJ_Pic\Trainer2023_OneAllTesting\Trainer2023_OneAllTesting.X\LibreriasPIC/lcd_2x16.c
 [v _Lcd_Write_String Lcd_Write_String `(v  1 e 1 0 ]

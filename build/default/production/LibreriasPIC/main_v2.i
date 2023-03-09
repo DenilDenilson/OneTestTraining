@@ -8402,10 +8402,11 @@ void Lcd_Write_String(unsigned char *a);
 void Lcd_Shift_Right( void );
 void Lcd_Shift_Left( void );
 # 2 "LibreriasPIC/main_v2.c" 2
-# 19 "LibreriasPIC/main_v2.c"
+# 30 "LibreriasPIC/main_v2.c"
 void OSCILADOR_Init(void);
 void Port_Init(void);
 void Message_Lcd_ok(void);
+uint8_t AnodoComun7Seg[10] = {0xC0,0xF9,0xA4,0xB0,0x99,0x92,0x82,0xF8,0x80,0x90};
 
 
 uint8_t ESTADO_APP;
@@ -8522,6 +8523,63 @@ int main(void) {
 
                 if ( PORTBbits.RB1 == 0 || PORTBbits.RB2 == 0) {
 
+                    ESTADO_APP = 8;
+
+                    Lcd_Clear();
+                    Lcd_Set_Cursor(1, 1);
+                    Lcd_Write_String("Leds Mux func?");
+                    Message_Lcd_ok();
+                    _delay((unsigned long)((1500)*(8000000UL/4000.0)));
+                }
+
+                break;
+
+            case 8:
+
+
+                LATCbits.LATC0 = 1;
+                LATEbits.LATE2 = 1;
+                LATEbits.LATE1 = 1;
+                LATEbits.LATE0 = 1;
+
+                LATD = AnodoComun7Seg[8];
+
+                LATCbits.LATC0 = 0;
+                _delay((unsigned long)((2)*(8000000UL/4000.0)));
+
+
+                LATCbits.LATC0 = 1;
+                LATEbits.LATE2 = 1;
+                LATEbits.LATE1 = 1;
+                LATEbits.LATE0 = 1;
+
+                LATD = AnodoComun7Seg[8];
+                LATEbits.LATE2 = 0;
+                _delay((unsigned long)((2)*(8000000UL/4000.0)));
+
+
+                LATCbits.LATC0 = 1;
+                LATEbits.LATE2 = 1;
+                LATEbits.LATE1 = 1;
+                LATEbits.LATE0 = 1;
+
+                LATD = AnodoComun7Seg[8];
+                LATEbits.LATE1 = 0;
+                _delay((unsigned long)((2)*(8000000UL/4000.0)));
+
+
+                LATCbits.LATC0 = 1;
+                LATEbits.LATE2 = 1;
+                LATEbits.LATE1 = 1;
+                LATEbits.LATE0 = 1;
+
+                LATD = AnodoComun7Seg[8];
+                LATEbits.LATE0 = 0;
+
+                _delay((unsigned long)((2)*(8000000UL/4000.0)));
+
+                if ( PORTBbits.RB1 == 0 || PORTBbits.RB2 == 0) {
+
                     ESTADO_APP = 4;
 
                     Lcd_Clear();
@@ -8530,6 +8588,7 @@ int main(void) {
                     Message_Lcd_ok();
                     _delay((unsigned long)((1500)*(8000000UL/4000.0)));
                 }
+
 
                 break;
 
@@ -8552,7 +8611,8 @@ int main(void) {
                     Lcd_Set_Cursor(2, 1);
                     Lcd_Write_String("Init test Buzzer");
                     _delay((unsigned long)((1000)*(8000000UL/4000.0)));
-                    ESTADO_APP = 5;
+
+                    ESTADO_APP = 7;
                 }
 
                 if ( PORTBbits.RB2 == 0 ) {
@@ -8564,52 +8624,11 @@ int main(void) {
                     Lcd_Set_Cursor(2, 1);
                     Lcd_Write_String("Init test Buzzer");
                     _delay((unsigned long)((1000)*(8000000UL/4000.0)));
-                    ESTADO_APP = 5;
-                }
-                break;
 
-            case 5:
-
-                Lcd_Clear();
-                Lcd_Set_Cursor(1, 1);
-                Lcd_Write_String("Relays func?...");
-
-
-                if ( PORTBbits.RB0 == 0 ) {
-                    _delay((unsigned long)((10)*(8000000UL/4000.0)));
-                    while( PORTBbits.RB0 == 0 );
-                    LATEbits.LATE2 = ~LATEbits.LATE2;
-                }
-
-                if ( PORTBbits.RB1 == 0 ) {
-                    _delay((unsigned long)((10)*(8000000UL/4000.0)));
-                    while( PORTBbits.RB1 == 0 );
-                    Lcd_Clear();
-                    Lcd_Set_Cursor(1, 1);
-                    Lcd_Write_String("Buzzer bien!");
-                    Lcd_Set_Cursor(2, 1);
-                    Lcd_Write_String("Init test Buzzer");
-                    _delay((unsigned long)((1000)*(8000000UL/4000.0)));
-                    ESTADO_APP = 7;
-                }
-
-                if ( PORTBbits.RB2 == 0 ) {
-                    _delay((unsigned long)((10)*(8000000UL/4000.0)));
-                    while( PORTBbits.RB1 == 0 );
-                    Lcd_Clear();
-                    Lcd_Set_Cursor(1, 1);
-                    Lcd_Write_String("Buzzer mal!");
-                    Lcd_Set_Cursor(2, 1);
-                    Lcd_Write_String("Init test Buzzer");
-                    _delay((unsigned long)((1000)*(8000000UL/4000.0)));
                     ESTADO_APP = 7;
                 }
                 break;
-
-
-
-
-
+# 298 "LibreriasPIC/main_v2.c"
             case 7:
 
                 Lcd_Clear();
@@ -8662,4 +8681,15 @@ void Port_Init(void) {
 
     LATEbits.LE0 = 0;
     LATBbits.LB4 = 0;
+
+
+    ANSELEbits.ANSE0 = 0;
+    ANSELEbits.ANSE1 = 0;
+    ANSELEbits.ANSE2 = 0;
+    TRISEbits.TRISE0 = 0;
+    TRISEbits.TRISE1 = 0;
+    TRISEbits.TRISE2 = 0;
+
+
+    TRISCbits.TRISC0 = 0;
 }

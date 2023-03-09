@@ -7,18 +7,30 @@
 #define BTN2            PORTBbits.RB2
 #define BTN3            PORTBbits.RB3
 
-#define TEST_INIT       1
-#define TEST_BUTTONS    2
-#define TEST_LEDS       3
-#define TEST_RELAYS     4
-#define TEST_BUZZER     5
-#define TEST_USART      6
-#define TEST_COMPLETE   7
+#define TEST_INIT               1
+#define TEST_BUTTONS            2
+#define TEST_LEDS               3
+#define TEST_LEDS_MULTIPLEXOR   8   
+#define TEST_RELAYS             4
+#define TEST_BUZZER             5
+#define TEST_USART              6
+#define TEST_COMPLETE           7
+
+#define DIGITO_UNIDADES_ON()    LATCbits.LATC0 = 0
+#define DIGITO_UNIDADES_OFF()   LATCbits.LATC0 = 1
+#define DIGITO_DECENAS_ON()     LATEbits.LATE2 = 0
+#define DIGITO_DECENAS_OFF()    LATEbits.LATE2 = 1
+#define DIGITO_CENTENAS_ON()    LATEbits.LATE1 = 0
+#define DIGITO_CENTENAS_OFF()   LATEbits.LATE1 = 1
+#define DIGITO_UND_MILLAR_ON()  LATEbits.LATE0 = 0
+#define DIGITO_UND_MILLAR_OFF() LATEbits.LATE0 = 1
+#define DISPLAY_PUERTO_DATOS    LATD
 
 // Prototipamos funciones
 void OSCILADOR_Init(void); // Prototipamos reloj a trabajar la micro
 void Port_Init(void); // Prototipamos los pines a utilizar
 void Message_Lcd_ok(void); // Messate to question is all ok in the test
+uint8_t AnodoComun7Seg[10] = {0xC0,0xF9,0xA4,0xB0,0x99,0x92,0x82,0xF8,0x80,0x90};
 
 // Variables
 uint8_t ESTADO_APP;
@@ -135,6 +147,63 @@ int main(void) {
                 
                 if ( BTN1 == 0 || BTN2 == 0) {
                     //continue_test = true;
+                    ESTADO_APP = TEST_LEDS_MULTIPLEXOR;
+                    // Testeando relays
+                    Lcd_Clear();
+                    Lcd_Set_Cursor(1, 1);
+                    Lcd_Write_String("Leds Mux func?");
+                    Message_Lcd_ok();
+                    __delay_ms(1500);
+                }
+                
+                break;
+                
+            case TEST_LEDS_MULTIPLEXOR:
+                
+                // 8888
+                DIGITO_UNIDADES_OFF();
+                DIGITO_DECENAS_OFF();
+                DIGITO_CENTENAS_OFF();
+                DIGITO_UND_MILLAR_OFF();
+                //Escribir en el puerto de datos
+                DISPLAY_PUERTO_DATOS = AnodoComun7Seg[8];
+                //Habilito el digito de visualizacion
+                DIGITO_UNIDADES_ON();
+                __delay_ms(2); //Tiempo de visualizacion
+
+                //Desabilitar digitos
+                DIGITO_UNIDADES_OFF();
+                DIGITO_DECENAS_OFF();
+                DIGITO_CENTENAS_OFF();
+                DIGITO_UND_MILLAR_OFF();
+                //Escribir en el puerto de datos
+                DISPLAY_PUERTO_DATOS = AnodoComun7Seg[8];
+                DIGITO_DECENAS_ON(); //Habilito el digito de visualizacion
+                __delay_ms(2); //Tiempo de visualizacion
+
+                //Desabilitar digitos
+                DIGITO_UNIDADES_OFF();
+                DIGITO_DECENAS_OFF();
+                DIGITO_CENTENAS_OFF();
+                DIGITO_UND_MILLAR_OFF();
+                //Escribir en el puerto de datos
+                DISPLAY_PUERTO_DATOS = AnodoComun7Seg[8];
+                DIGITO_CENTENAS_ON(); //Habilito el digito de visualizacion
+                __delay_ms(2); //Tiempo de visualizacion
+
+                //Desabilitar digitos
+                DIGITO_UNIDADES_OFF();
+                DIGITO_DECENAS_OFF();
+                DIGITO_CENTENAS_OFF();
+                DIGITO_UND_MILLAR_OFF();
+                //Escribir en el puerto de datos
+                DISPLAY_PUERTO_DATOS = AnodoComun7Seg[8];
+                DIGITO_UND_MILLAR_ON();
+                //Habilito el digito de visualizacion
+                __delay_ms(2); //Tiempo de visualizacion
+                
+                if ( BTN1 == 0 || BTN2 == 0) {
+                    //continue_test = true;
                     ESTADO_APP = TEST_RELAYS;
                     // Testeando relays
                     Lcd_Clear();
@@ -143,6 +212,7 @@ int main(void) {
                     Message_Lcd_ok();
                     __delay_ms(1500);
                 }
+                
                 
                 break;
             
@@ -277,4 +347,15 @@ void Port_Init(void) {
     
     LATEbits.LE0 = 0; // Inicializamos en 0
     LATBbits.LB4 = 0;
+    
+    // Leds multiplexores
+    ANSELEbits.ANSE0 = 0;
+    ANSELEbits.ANSE1 = 0;
+    ANSELEbits.ANSE2 = 0;
+    TRISEbits.TRISE0 = 0;
+    TRISEbits.TRISE1 = 0;
+    TRISEbits.TRISE2 = 0;
+    
+    //Config Puerto C
+    TRISCbits.TRISC0 = 0; //Salida
 }
