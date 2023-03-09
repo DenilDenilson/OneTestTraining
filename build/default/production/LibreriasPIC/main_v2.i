@@ -8402,7 +8402,22 @@ void Lcd_Write_String(unsigned char *a);
 void Lcd_Shift_Right( void );
 void Lcd_Shift_Left( void );
 # 2 "LibreriasPIC/main_v2.c" 2
-# 30 "LibreriasPIC/main_v2.c"
+
+# 1 "LibreriasPIC/usart.h" 1
+# 10 "LibreriasPIC/usart.h"
+void USART_SerialBegin(uint32_t baudios);
+void USART_TxEnable(void);
+void USART_TxDisable(void);
+void USART_RxEnable(void);
+void USART_RxDisable(void);
+void USART_WriteByte(char data);
+void USART_WriteString(char *pString);
+char USART_ReadByte(void);
+void putch(char c);
+void USART_RxInterruptEnable(void);
+void USART_RxInterruptDisable(void);
+# 3 "LibreriasPIC/main_v2.c" 2
+# 32 "LibreriasPIC/main_v2.c"
 void OSCILADOR_Init(void);
 void Port_Init(void);
 void Message_Lcd_ok(void);
@@ -8417,6 +8432,7 @@ _Bool btn3_pushed = 0;
 _Bool continue_test = 0;
 
 char strButtons[20];
+char dataRx;
 
 int main(void) {
 
@@ -8424,6 +8440,7 @@ int main(void) {
     Port_Init();
     Lcd_Init();
     Lcd_Clear();
+    USART_SerialBegin(9600);
 
 
     ESTADO_APP = 1;
@@ -8452,7 +8469,7 @@ int main(void) {
                         Lcd_Set_Cursor(2, j);
                         sprintf(strI, "%d", i);
                         Lcd_Write_String(strI);
-                        _delay((unsigned long)((200)*(8000000UL/4000.0)));
+                        _delay((unsigned long)((100)*(8000000UL/4000.0)));
                         Lcd_Clear();
                     }
                 }
@@ -8542,7 +8559,7 @@ int main(void) {
                 LATEbits.LATE1 = 1;
                 LATEbits.LATE0 = 1;
 
-                LATD = AnodoComun7Seg[8];
+                LATD = AnodoComun7Seg[9];
 
                 LATCbits.LATC0 = 0;
                 _delay((unsigned long)((2)*(8000000UL/4000.0)));
@@ -8563,7 +8580,7 @@ int main(void) {
                 LATEbits.LATE1 = 1;
                 LATEbits.LATE0 = 1;
 
-                LATD = AnodoComun7Seg[8];
+                LATD = AnodoComun7Seg[7];
                 LATEbits.LATE1 = 0;
                 _delay((unsigned long)((2)*(8000000UL/4000.0)));
 
@@ -8573,7 +8590,7 @@ int main(void) {
                 LATEbits.LATE1 = 1;
                 LATEbits.LATE0 = 1;
 
-                LATD = AnodoComun7Seg[8];
+                LATD = AnodoComun7Seg[6];
                 LATEbits.LATE0 = 0;
 
                 _delay((unsigned long)((2)*(8000000UL/4000.0)));
@@ -8609,10 +8626,10 @@ int main(void) {
                     Lcd_Set_Cursor(1, 1);
                     Lcd_Write_String("Relays bien!");
                     Lcd_Set_Cursor(2, 1);
-                    Lcd_Write_String("Init test Buzzer");
+                    Lcd_Write_String("Init TEST_USART");
                     _delay((unsigned long)((1000)*(8000000UL/4000.0)));
 
-                    ESTADO_APP = 7;
+                    ESTADO_APP = 9;
                 }
 
                 if ( PORTBbits.RB2 == 0 ) {
@@ -8622,13 +8639,47 @@ int main(void) {
                     Lcd_Set_Cursor(1, 1);
                     Lcd_Write_String("Relays mal!");
                     Lcd_Set_Cursor(2, 1);
-                    Lcd_Write_String("Init test Buzzer");
+                    Lcd_Write_String("Init TEST_USART");
                     _delay((unsigned long)((1000)*(8000000UL/4000.0)));
 
-                    ESTADO_APP = 7;
+                    ESTADO_APP = 9;
                 }
                 break;
-# 298 "LibreriasPIC/main_v2.c"
+
+            case 9:
+
+
+
+                dataRx = USART_ReadByte();
+
+                if(dataRx == 'A')
+                {
+                    LATD = 255;
+                    LATEbits.LATE2 = 1;
+                    USART_WriteString("LED 1 ON \r\n");
+                }
+                else if(dataRx == 'B')
+                {
+                    LATD = 0;
+                    LATEbits.LATE2 = 0;
+                    USART_WriteString("LED 1 OFF \r\n");
+                }
+
+                if ( PORTBbits.RB2 == 0) {
+
+                    ESTADO_APP = 7;
+
+                    Lcd_Clear();
+                    Lcd_Set_Cursor(1, 1);
+                    Lcd_Write_String("USART FINISH...");
+                    Message_Lcd_ok();
+                    _delay((unsigned long)((1500)*(8000000UL/4000.0)));
+                }
+
+
+
+                break;
+# 337 "LibreriasPIC/main_v2.c"
             case 7:
 
                 Lcd_Clear();
@@ -8655,10 +8706,13 @@ void Port_Init(void) {
 
 
     ANSELD = 0x00;
+    TRISDbits.RD0 = 0;
+    TRISDbits.RD1 = 0;
 
 
 
 
+    ANSELB = 0X00;
     ANSELBbits.ANSB0 = 0;
     ANSELBbits.ANSB1 = 0;
     ANSELBbits.ANSB2 = 0;

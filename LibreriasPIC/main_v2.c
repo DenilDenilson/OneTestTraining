@@ -1,5 +1,6 @@
 #include "configDevice.h"
 #include "lcd_2x16.h"
+#include "usart.h"
 
 // In botons 0 == push
 #define BTN0            PORTBbits.RB0
@@ -10,11 +11,12 @@
 #define TEST_INIT               1
 #define TEST_BUTTONS            2
 #define TEST_LEDS               3
-#define TEST_LEDS_MULTIPLEXOR   8   
 #define TEST_RELAYS             4
 #define TEST_BUZZER             5
 #define TEST_USART              6
 #define TEST_COMPLETE           7
+#define TEST_LEDS_MULTIPLEXOR   8   
+#define TEST_USART              9
 
 #define DIGITO_UNIDADES_ON()    LATCbits.LATC0 = 0
 #define DIGITO_UNIDADES_OFF()   LATCbits.LATC0 = 1
@@ -41,6 +43,7 @@ bool btn3_pushed = false;
 bool continue_test = false;
 
 char strButtons[20];
+char dataRx;
 
 int main(void) {
     
@@ -48,6 +51,7 @@ int main(void) {
     Port_Init(); // Inicializamos los puertos
     Lcd_Init(); // Inicializamos el led
     Lcd_Clear();
+    USART_SerialBegin(9600);
 
     
     ESTADO_APP = TEST_INIT;
@@ -76,7 +80,7 @@ int main(void) {
                         Lcd_Set_Cursor(2, j);
                         sprintf(strI, "%d", i);
                         Lcd_Write_String(strI);
-                        __delay_ms(200);
+                        __delay_ms(100);
                         Lcd_Clear();
                     }
                 }
@@ -166,7 +170,7 @@ int main(void) {
                 DIGITO_CENTENAS_OFF();
                 DIGITO_UND_MILLAR_OFF();
                 //Escribir en el puerto de datos
-                DISPLAY_PUERTO_DATOS = AnodoComun7Seg[8];
+                DISPLAY_PUERTO_DATOS = AnodoComun7Seg[9];
                 //Habilito el digito de visualizacion
                 DIGITO_UNIDADES_ON();
                 __delay_ms(2); //Tiempo de visualizacion
@@ -187,7 +191,7 @@ int main(void) {
                 DIGITO_CENTENAS_OFF();
                 DIGITO_UND_MILLAR_OFF();
                 //Escribir en el puerto de datos
-                DISPLAY_PUERTO_DATOS = AnodoComun7Seg[8];
+                DISPLAY_PUERTO_DATOS = AnodoComun7Seg[7];
                 DIGITO_CENTENAS_ON(); //Habilito el digito de visualizacion
                 __delay_ms(2); //Tiempo de visualizacion
 
@@ -197,7 +201,7 @@ int main(void) {
                 DIGITO_CENTENAS_OFF();
                 DIGITO_UND_MILLAR_OFF();
                 //Escribir en el puerto de datos
-                DISPLAY_PUERTO_DATOS = AnodoComun7Seg[8];
+                DISPLAY_PUERTO_DATOS = AnodoComun7Seg[6];
                 DIGITO_UND_MILLAR_ON();
                 //Habilito el digito de visualizacion
                 __delay_ms(2); //Tiempo de visualizacion
@@ -233,10 +237,10 @@ int main(void) {
                     Lcd_Set_Cursor(1, 1);
                     Lcd_Write_String("Relays bien!");
                     Lcd_Set_Cursor(2, 1);
-                    Lcd_Write_String("Init test Buzzer");
+                    Lcd_Write_String("Init TEST_USART");
                     __delay_ms(1000);
                     //ESTADO_APP = TEST_BUZZER;
-                    ESTADO_APP = TEST_COMPLETE;
+                    ESTADO_APP = TEST_USART;
                 }
                 
                 if ( BTN2 == 0 ) {
@@ -246,12 +250,47 @@ int main(void) {
                     Lcd_Set_Cursor(1, 1);
                     Lcd_Write_String("Relays mal!");
                     Lcd_Set_Cursor(2, 1);
-                    Lcd_Write_String("Init test Buzzer");
+                    Lcd_Write_String("Init TEST_USART");
                     __delay_ms(1000);
                     //ESTADO_APP = TEST_BUZZER;
-                    ESTADO_APP = TEST_COMPLETE;
+                    ESTADO_APP = TEST_USART;
                 }                
                 break;
+                
+            case TEST_USART:
+                
+                //USART_WriteString("LED 1 ON \r\n");
+
+                dataRx = USART_ReadByte();
+
+                if(dataRx == 'A')
+                {
+                    LATD = 255;
+                    LATEbits.LATE2 = 1;
+                    USART_WriteString("LED 1 ON \r\n");
+                }
+                else if(dataRx == 'B')
+                {
+                    LATD = 0;
+                    LATEbits.LATE2 = 0;
+                    USART_WriteString("LED 1 OFF \r\n");
+                }
+                
+                if ( BTN2 == 0) {
+                    //continue_test = true;
+                    ESTADO_APP = TEST_COMPLETE;
+                    // Testeando relays
+                    Lcd_Clear();
+                    Lcd_Set_Cursor(1, 1);
+                    Lcd_Write_String("USART FINISH...");
+                    Message_Lcd_ok();
+                    __delay_ms(1500);
+                }
+                
+                
+                
+                break;
+                
                 
 //            case TEST_BUZZER:
 //                // Testeando buzzer
@@ -321,10 +360,13 @@ void Port_Init(void) {
     // PORT D
     // ( Asociado al LCD display y leds )
     ANSELD = 0x00; // Puerto D como digital
+    TRISDbits.RD0 = 0; // salida digital
+    TRISDbits.RD1 = 0; // salida digital
     //TRISD = 0x00; // Puerdo D como salida aunque ya lo configura la librería
     
     // PORT B
     // ( Asociado a los tres botones )
+    ANSELB = 0X00;
     ANSELBbits.ANSB0 = 0; // Pines digitales
     ANSELBbits.ANSB1 = 0;
     ANSELBbits.ANSB2 = 0;

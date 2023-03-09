@@ -1,10 +1,10 @@
 Version 4.0 HI-TECH Software Intermediate Code
 [p mainexit ]
-"30 LibreriasPIC/main_v2.c
-[; ;LibreriasPIC/main_v2.c: 30: void OSCILADOR_Init(void);
+"32 LibreriasPIC/main_v2.c
+[; ;LibreriasPIC/main_v2.c: 32: void OSCILADOR_Init(void);
 [v _OSCILADOR_Init `(v ~T0 @X0 0 ef ]
-"31
-[; ;LibreriasPIC/main_v2.c: 31: void Port_Init(void);
+"33
+[; ;LibreriasPIC/main_v2.c: 33: void Port_Init(void);
 [v _Port_Init `(v ~T0 @X0 0 ef ]
 "35 LibreriasPIC/lcd_2x16.h
 [; ;LibreriasPIC/lcd_2x16.h: 35: void Lcd_Init( void );
@@ -12,7 +12,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "33
 [; ;LibreriasPIC/lcd_2x16.h: 33: void Lcd_Clear( void );
 [v _Lcd_Clear `(v ~T0 @X0 0 ef ]
-"34
+"10 LibreriasPIC/usart.h
+[; ;LibreriasPIC/usart.h: 10: void USART_SerialBegin(uint32_t baudios);
+[v _USART_SerialBegin `(v ~T0 @X0 0 ef1`ul ]
+"34 LibreriasPIC/lcd_2x16.h
 [; ;LibreriasPIC/lcd_2x16.h: 34: void Lcd_Set_Cursor(unsigned char a, unsigned char b);
 [v _Lcd_Set_Cursor `(v ~T0 @X0 0 ef2`uc`uc ]
 "37
@@ -44,8 +47,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "3083
 [; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18F-K_DFP/1.7.134/xc8\pic\include\proc\pic18f45k50.h: 3083: extern volatile PORTBbits_t PORTBbits __attribute__((address(0xF81)));
 [v _PORTBbits `VS134 ~T0 @X0 0 e@3969 ]
-"32 LibreriasPIC/main_v2.c
-[; ;LibreriasPIC/main_v2.c: 32: void Message_Lcd_ok(void);
+"34 LibreriasPIC/main_v2.c
+[; ;LibreriasPIC/main_v2.c: 34: void Message_Lcd_ok(void);
 [v _Message_Lcd_ok `(v ~T0 @X0 0 ef ]
 "4105 C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18F-K_DFP/1.7.134/xc8\pic\include\proc\pic18f45k50.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18F-K_DFP/1.7.134/xc8\pic\include\proc\pic18f45k50.h: 4105: extern volatile unsigned char LATD __attribute__((address(0xF8C)));
@@ -95,9 +98,33 @@ Version 4.0 HI-TECH Software Intermediate Code
 "3918
 [; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18F-K_DFP/1.7.134/xc8\pic\include\proc\pic18f45k50.h: 3918: extern volatile LATBbits_t LATBbits __attribute__((address(0xF8A)));
 [v _LATBbits `VS166 ~T0 @X0 0 e@3978 ]
-"361
+"17 LibreriasPIC/usart.h
+[; ;LibreriasPIC/usart.h: 17: char USART_ReadByte(void);
+[v _USART_ReadByte `(uc ~T0 @X0 0 ef ]
+"16
+[; ;LibreriasPIC/usart.h: 16: void USART_WriteString(char *pString);
+[v _USART_WriteString `(v ~T0 @X0 0 ef1`*uc ]
+"361 C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18F-K_DFP/1.7.134/xc8\pic\include\proc\pic18f45k50.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18F-K_DFP/1.7.134/xc8\pic\include\proc\pic18f45k50.h: 361: extern volatile unsigned char ANSELD __attribute__((address(0xF5E)));
 [v _ANSELD `Vuc ~T0 @X0 0 e@3934 ]
+"5259
+[; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18F-K_DFP/1.7.134/xc8\pic\include\proc\pic18f45k50.h: 5259:     struct {
+[s S213 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S213 . TRISD0 TRISD1 TRISD2 TRISD3 TRISD4 TRISD5 TRISD6 TRISD7 ]
+"5269
+[; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18F-K_DFP/1.7.134/xc8\pic\include\proc\pic18f45k50.h: 5269:     struct {
+[s S214 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S214 . RD0 RD1 RD2 RD3 RD4 RD5 RD6 RD7 ]
+"5258
+[; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18F-K_DFP/1.7.134/xc8\pic\include\proc\pic18f45k50.h: 5258: typedef union {
+[u S212 `S213 1 `S214 1 ]
+[n S212 . . . ]
+"5280
+[; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18F-K_DFP/1.7.134/xc8\pic\include\proc\pic18f45k50.h: 5280: extern volatile TRISDbits_t TRISDbits __attribute__((address(0xF95)));
+[v _TRISDbits `VS212 ~T0 @X0 0 e@3989 ]
+"277
+[; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18F-K_DFP/1.7.134/xc8\pic\include\proc\pic18f45k50.h: 277: extern volatile unsigned char ANSELB __attribute__((address(0xF5C)));
+[v _ANSELB `Vuc ~T0 @X0 0 e@3932 ]
 "283
 [; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18F-K_DFP/1.7.134/xc8\pic\include\proc\pic18f45k50.h: 283:     struct {
 [s S18 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -871,8 +898,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [p x EBTR3  =  OFF       ]
 "79
 [p x EBTRB  =  OFF       ]
-"33 LibreriasPIC/main_v2.c
-[; ;LibreriasPIC/main_v2.c: 33: uint8_t AnodoComun7Seg[10] = {0xC0,0xF9,0xA4,0xB0,0x99,0x92,0x82,0xF8,0x80,0x90};
+"35 LibreriasPIC/main_v2.c
+[; ;LibreriasPIC/main_v2.c: 35: uint8_t AnodoComun7Seg[10] = {0xC0,0xF9,0xA4,0xB0,0x99,0x92,0x82,0xF8,0x80,0x90};
 [v _AnodoComun7Seg `uc ~T0 @X0 -> 10 `i e ]
 [i _AnodoComun7Seg
 :U ..
@@ -888,104 +915,110 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 144 `i `uc
 ..
 ]
-"36
-[; ;LibreriasPIC/main_v2.c: 36: uint8_t ESTADO_APP;
+"38
+[; ;LibreriasPIC/main_v2.c: 38: uint8_t ESTADO_APP;
 [v _ESTADO_APP `uc ~T0 @X0 1 e ]
-"37
-[; ;LibreriasPIC/main_v2.c: 37: _Bool btn0_pushed = 0;
+"39
+[; ;LibreriasPIC/main_v2.c: 39: _Bool btn0_pushed = 0;
 [v _btn0_pushed `a ~T0 @X0 1 e ]
 [i _btn0_pushed
 -> -> 0 `i `a
 ]
-"38
-[; ;LibreriasPIC/main_v2.c: 38: _Bool btn1_pushed = 0;
+"40
+[; ;LibreriasPIC/main_v2.c: 40: _Bool btn1_pushed = 0;
 [v _btn1_pushed `a ~T0 @X0 1 e ]
 [i _btn1_pushed
 -> -> 0 `i `a
 ]
-"39
-[; ;LibreriasPIC/main_v2.c: 39: _Bool btn2_pushed = 0;
+"41
+[; ;LibreriasPIC/main_v2.c: 41: _Bool btn2_pushed = 0;
 [v _btn2_pushed `a ~T0 @X0 1 e ]
 [i _btn2_pushed
 -> -> 0 `i `a
 ]
-"40
-[; ;LibreriasPIC/main_v2.c: 40: _Bool btn3_pushed = 0;
+"42
+[; ;LibreriasPIC/main_v2.c: 42: _Bool btn3_pushed = 0;
 [v _btn3_pushed `a ~T0 @X0 1 e ]
 [i _btn3_pushed
 -> -> 0 `i `a
 ]
-"41
-[; ;LibreriasPIC/main_v2.c: 41: _Bool continue_test = 0;
+"43
+[; ;LibreriasPIC/main_v2.c: 43: _Bool continue_test = 0;
 [v _continue_test `a ~T0 @X0 1 e ]
 [i _continue_test
 -> -> 0 `i `a
 ]
-"43
-[; ;LibreriasPIC/main_v2.c: 43: char strButtons[20];
-[v _strButtons `uc ~T0 @X0 -> 20 `i e ]
-[v $root$_main `(v ~T0 @X0 0 e ]
 "45
-[; ;LibreriasPIC/main_v2.c: 45: int main(void) {
+[; ;LibreriasPIC/main_v2.c: 45: char strButtons[20];
+[v _strButtons `uc ~T0 @X0 -> 20 `i e ]
+"46
+[; ;LibreriasPIC/main_v2.c: 46: char dataRx;
+[v _dataRx `uc ~T0 @X0 1 e ]
+[v $root$_main `(v ~T0 @X0 0 e ]
+"48
+[; ;LibreriasPIC/main_v2.c: 48: int main(void) {
 [v _main `(i ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"47
-[; ;LibreriasPIC/main_v2.c: 47:     OSCILADOR_Init();
-[e ( _OSCILADOR_Init ..  ]
-"48
-[; ;LibreriasPIC/main_v2.c: 48:     Port_Init();
-[e ( _Port_Init ..  ]
-"49
-[; ;LibreriasPIC/main_v2.c: 49:     Lcd_Init();
-[e ( _Lcd_Init ..  ]
 "50
-[; ;LibreriasPIC/main_v2.c: 50:     Lcd_Clear();
-[e ( _Lcd_Clear ..  ]
+[; ;LibreriasPIC/main_v2.c: 50:     OSCILADOR_Init();
+[e ( _OSCILADOR_Init ..  ]
+"51
+[; ;LibreriasPIC/main_v2.c: 51:     Port_Init();
+[e ( _Port_Init ..  ]
+"52
+[; ;LibreriasPIC/main_v2.c: 52:     Lcd_Init();
+[e ( _Lcd_Init ..  ]
 "53
-[; ;LibreriasPIC/main_v2.c: 53:     ESTADO_APP = 1;
+[; ;LibreriasPIC/main_v2.c: 53:     Lcd_Clear();
+[e ( _Lcd_Clear ..  ]
+"54
+[; ;LibreriasPIC/main_v2.c: 54:     USART_SerialBegin(9600);
+[e ( _USART_SerialBegin (1 -> -> -> 9600 `i `l `ul ]
+"57
+[; ;LibreriasPIC/main_v2.c: 57:     ESTADO_APP = 1;
 [e = _ESTADO_APP -> -> 1 `i `uc ]
-"55
-[; ;LibreriasPIC/main_v2.c: 55:     while (1) {
+"59
+[; ;LibreriasPIC/main_v2.c: 59:     while (1) {
 [e :U 641 ]
 {
-"57
-[; ;LibreriasPIC/main_v2.c: 57:         switch(ESTADO_APP) {
+"61
+[; ;LibreriasPIC/main_v2.c: 61:         switch(ESTADO_APP) {
 [e $U 644  ]
 {
-"58
-[; ;LibreriasPIC/main_v2.c: 58:             case 1:
-[e :U 645 ]
-"60
-[; ;LibreriasPIC/main_v2.c: 60:                 Lcd_Clear();
-[e ( _Lcd_Clear ..  ]
-"61
-[; ;LibreriasPIC/main_v2.c: 61:                 Lcd_Set_Cursor(1, 1);
-[e ( _Lcd_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
 "62
-[; ;LibreriasPIC/main_v2.c: 62:                 Lcd_Write_String("starting test");
-[e ( _Lcd_Write_String (1 :s 1C ]
-"63
-[; ;LibreriasPIC/main_v2.c: 63:                 Lcd_Set_Cursor(2, 1);
-[e ( _Lcd_Set_Cursor (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
+[; ;LibreriasPIC/main_v2.c: 62:             case 1:
+[e :U 645 ]
 "64
-[; ;LibreriasPIC/main_v2.c: 64:                 Lcd_Write_String("of trainer");
-[e ( _Lcd_Write_String (1 :s 2C ]
-"65
-[; ;LibreriasPIC/main_v2.c: 65:                 _delay((unsigned long)((1500)*(8000000UL/4000.0)));
-[e ( __delay (1 -> * -> -> 1500 `i `d / -> -> 8000000 `ul `d .4000.0 `ul ]
-"66
-[; ;LibreriasPIC/main_v2.c: 66:                 Lcd_Clear();
+[; ;LibreriasPIC/main_v2.c: 64:                 Lcd_Clear();
 [e ( _Lcd_Clear ..  ]
-"67
-[; ;LibreriasPIC/main_v2.c: 67:                 Lcd_Set_Cursor(1, 1);
+"65
+[; ;LibreriasPIC/main_v2.c: 65:                 Lcd_Set_Cursor(1, 1);
 [e ( _Lcd_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
+"66
+[; ;LibreriasPIC/main_v2.c: 66:                 Lcd_Write_String("starting test");
+[e ( _Lcd_Write_String (1 :s 1C ]
+"67
+[; ;LibreriasPIC/main_v2.c: 67:                 Lcd_Set_Cursor(2, 1);
+[e ( _Lcd_Set_Cursor (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
 "68
-[; ;LibreriasPIC/main_v2.c: 68:                 Lcd_Write_String("In ...");
-[e ( _Lcd_Write_String (1 :s 3C ]
+[; ;LibreriasPIC/main_v2.c: 68:                 Lcd_Write_String("of trainer");
+[e ( _Lcd_Write_String (1 :s 2C ]
+"69
+[; ;LibreriasPIC/main_v2.c: 69:                 _delay((unsigned long)((1500)*(8000000UL/4000.0)));
+[e ( __delay (1 -> * -> -> 1500 `i `d / -> -> 8000000 `ul `d .4000.0 `ul ]
+"70
+[; ;LibreriasPIC/main_v2.c: 70:                 Lcd_Clear();
+[e ( _Lcd_Clear ..  ]
 "71
-[; ;LibreriasPIC/main_v2.c: 71:                 for ( int i = 3; i > 0; i-- ) {
+[; ;LibreriasPIC/main_v2.c: 71:                 Lcd_Set_Cursor(1, 1);
+[e ( _Lcd_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
+"72
+[; ;LibreriasPIC/main_v2.c: 72:                 Lcd_Write_String("In ...");
+[e ( _Lcd_Write_String (1 :s 3C ]
+"75
+[; ;LibreriasPIC/main_v2.c: 75:                 for ( int i = 3; i > 0; i-- ) {
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 3 `i ]
@@ -993,11 +1026,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $U 647  ]
 [e :U 646 ]
 {
-"72
-[; ;LibreriasPIC/main_v2.c: 72:                     char strI[20];
+"76
+[; ;LibreriasPIC/main_v2.c: 76:                     char strI[20];
 [v _strI `uc ~T0 @X0 -> 20 `i a ]
-"73
-[; ;LibreriasPIC/main_v2.c: 73:                     for ( int j = 1; j < 17; j++ ) {
+"77
+[; ;LibreriasPIC/main_v2.c: 77:                     for ( int j = 1; j < 17; j++ ) {
 {
 [v _j `i ~T0 @X0 1 a ]
 [e = _j -> 1 `i ]
@@ -1005,487 +1038,562 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $U 650  ]
 [e :U 649 ]
 {
-"74
-[; ;LibreriasPIC/main_v2.c: 74:                         Lcd_Set_Cursor(1, 1);
-[e ( _Lcd_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
-"75
-[; ;LibreriasPIC/main_v2.c: 75:                         Lcd_Write_String("In ...");
-[e ( _Lcd_Write_String (1 :s 4C ]
-"76
-[; ;LibreriasPIC/main_v2.c: 76:                         Lcd_Set_Cursor(2, j);
-[e ( _Lcd_Set_Cursor (2 , -> -> 2 `i `uc -> _j `uc ]
-"77
-[; ;LibreriasPIC/main_v2.c: 77:                         sprintf(strI, "%d", i);
-[e ( _sprintf (1 , (. , &U _strI :s 5C _i ]
 "78
-[; ;LibreriasPIC/main_v2.c: 78:                         Lcd_Write_String(strI);
-[e ( _Lcd_Write_String (1 -> &U _strI `*uc ]
+[; ;LibreriasPIC/main_v2.c: 78:                         Lcd_Set_Cursor(1, 1);
+[e ( _Lcd_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
 "79
-[; ;LibreriasPIC/main_v2.c: 79:                         _delay((unsigned long)((200)*(8000000UL/4000.0)));
-[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 8000000 `ul `d .4000.0 `ul ]
+[; ;LibreriasPIC/main_v2.c: 79:                         Lcd_Write_String("In ...");
+[e ( _Lcd_Write_String (1 :s 4C ]
 "80
-[; ;LibreriasPIC/main_v2.c: 80:                         Lcd_Clear();
-[e ( _Lcd_Clear ..  ]
+[; ;LibreriasPIC/main_v2.c: 80:                         Lcd_Set_Cursor(2, j);
+[e ( _Lcd_Set_Cursor (2 , -> -> 2 `i `uc -> _j `uc ]
 "81
-[; ;LibreriasPIC/main_v2.c: 81:                     }
+[; ;LibreriasPIC/main_v2.c: 81:                         sprintf(strI, "%d", i);
+[e ( _sprintf (1 , (. , &U _strI :s 5C _i ]
+"82
+[; ;LibreriasPIC/main_v2.c: 82:                         Lcd_Write_String(strI);
+[e ( _Lcd_Write_String (1 -> &U _strI `*uc ]
+"83
+[; ;LibreriasPIC/main_v2.c: 83:                         _delay((unsigned long)((100)*(8000000UL/4000.0)));
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 8000000 `ul `d .4000.0 `ul ]
+"84
+[; ;LibreriasPIC/main_v2.c: 84:                         Lcd_Clear();
+[e ( _Lcd_Clear ..  ]
+"85
+[; ;LibreriasPIC/main_v2.c: 85:                     }
 }
 [e ++ _j -> 1 `i ]
 [e $ < _j -> 17 `i 649  ]
 [e :U 650 ]
 }
-"82
-[; ;LibreriasPIC/main_v2.c: 82:                 }
+"86
+[; ;LibreriasPIC/main_v2.c: 86:                 }
 }
 [e -- _i -> 1 `i ]
 [e $ > _i -> 0 `i 646  ]
 [e :U 647 ]
 }
-"84
-[; ;LibreriasPIC/main_v2.c: 84:                 ESTADO_APP = 2;
-[e = _ESTADO_APP -> -> 2 `i `uc ]
-"87
-[; ;LibreriasPIC/main_v2.c: 87:                 Lcd_Clear();
-[e ( _Lcd_Clear ..  ]
 "88
-[; ;LibreriasPIC/main_v2.c: 88:                 Lcd_Set_Cursor(1, 1);
-[e ( _Lcd_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
-"89
-[; ;LibreriasPIC/main_v2.c: 89:                 Lcd_Write_String("Buttons test");
-[e ( _Lcd_Write_String (1 :s 6C ]
-"90
-[; ;LibreriasPIC/main_v2.c: 90:                 Lcd_Set_Cursor(2, 1);
-[e ( _Lcd_Set_Cursor (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
+[; ;LibreriasPIC/main_v2.c: 88:                 ESTADO_APP = 2;
+[e = _ESTADO_APP -> -> 2 `i `uc ]
 "91
-[; ;LibreriasPIC/main_v2.c: 91:                 Lcd_Write_String("Push any button");
-[e ( _Lcd_Write_String (1 :s 7C ]
+[; ;LibreriasPIC/main_v2.c: 91:                 Lcd_Clear();
+[e ( _Lcd_Clear ..  ]
 "92
-[; ;LibreriasPIC/main_v2.c: 92:                 _delay((unsigned long)((1500)*(8000000UL/4000.0)));
-[e ( __delay (1 -> * -> -> 1500 `i `d / -> -> 8000000 `ul `d .4000.0 `ul ]
+[; ;LibreriasPIC/main_v2.c: 92:                 Lcd_Set_Cursor(1, 1);
+[e ( _Lcd_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
+"93
+[; ;LibreriasPIC/main_v2.c: 93:                 Lcd_Write_String("Buttons test");
+[e ( _Lcd_Write_String (1 :s 6C ]
 "94
-[; ;LibreriasPIC/main_v2.c: 94:                 break;
-[e $U 643  ]
+[; ;LibreriasPIC/main_v2.c: 94:                 Lcd_Set_Cursor(2, 1);
+[e ( _Lcd_Set_Cursor (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
+"95
+[; ;LibreriasPIC/main_v2.c: 95:                 Lcd_Write_String("Push any button");
+[e ( _Lcd_Write_String (1 :s 7C ]
 "96
-[; ;LibreriasPIC/main_v2.c: 96:             case 2:
-[e :U 652 ]
+[; ;LibreriasPIC/main_v2.c: 96:                 _delay((unsigned long)((1500)*(8000000UL/4000.0)));
+[e ( __delay (1 -> * -> -> 1500 `i `d / -> -> 8000000 `ul `d .4000.0 `ul ]
 "98
-[; ;LibreriasPIC/main_v2.c: 98:                 if ( PORTBbits.RB0 == 0 ) {
+[; ;LibreriasPIC/main_v2.c: 98:                 break;
+[e $U 643  ]
+"100
+[; ;LibreriasPIC/main_v2.c: 100:             case 2:
+[e :U 652 ]
+"102
+[; ;LibreriasPIC/main_v2.c: 102:                 if ( PORTBbits.RB0 == 0 ) {
 [e $ ! == -> . . _PORTBbits 0 0 `i -> 0 `i 653  ]
 {
-"99
-[; ;LibreriasPIC/main_v2.c: 99:                     _delay((unsigned long)((10)*(8000000UL/4000.0)));
+"103
+[; ;LibreriasPIC/main_v2.c: 103:                     _delay((unsigned long)((10)*(8000000UL/4000.0)));
 [e ( __delay (1 -> * -> -> 10 `i `d / -> -> 8000000 `ul `d .4000.0 `ul ]
-"100
-[; ;LibreriasPIC/main_v2.c: 100:                     while( PORTBbits.RB0 == 0 );
+"104
+[; ;LibreriasPIC/main_v2.c: 104:                     while( PORTBbits.RB0 == 0 );
 [e $U 654  ]
 [e :U 655 ]
 [e :U 654 ]
 [e $ == -> . . _PORTBbits 0 0 `i -> 0 `i 655  ]
 [e :U 656 ]
-"101
-[; ;LibreriasPIC/main_v2.c: 101:                     btn0_pushed = 1;
+"105
+[; ;LibreriasPIC/main_v2.c: 105:                     btn0_pushed = 1;
 [e = _btn0_pushed -> -> 1 `i `a ]
-"102
-[; ;LibreriasPIC/main_v2.c: 102:                 }
+"106
+[; ;LibreriasPIC/main_v2.c: 106:                 }
 }
 [e :U 653 ]
-"104
-[; ;LibreriasPIC/main_v2.c: 104:                 if ( PORTBbits.RB1 == 0 ) {
+"108
+[; ;LibreriasPIC/main_v2.c: 108:                 if ( PORTBbits.RB1 == 0 ) {
 [e $ ! == -> . . _PORTBbits 0 1 `i -> 0 `i 657  ]
 {
-"105
-[; ;LibreriasPIC/main_v2.c: 105:                     _delay((unsigned long)((10)*(8000000UL/4000.0)));
+"109
+[; ;LibreriasPIC/main_v2.c: 109:                     _delay((unsigned long)((10)*(8000000UL/4000.0)));
 [e ( __delay (1 -> * -> -> 10 `i `d / -> -> 8000000 `ul `d .4000.0 `ul ]
-"106
-[; ;LibreriasPIC/main_v2.c: 106:                     while( PORTBbits.RB1 == 0 );
+"110
+[; ;LibreriasPIC/main_v2.c: 110:                     while( PORTBbits.RB1 == 0 );
 [e $U 658  ]
 [e :U 659 ]
 [e :U 658 ]
 [e $ == -> . . _PORTBbits 0 1 `i -> 0 `i 659  ]
 [e :U 660 ]
-"107
-[; ;LibreriasPIC/main_v2.c: 107:                     btn1_pushed = 1;
+"111
+[; ;LibreriasPIC/main_v2.c: 111:                     btn1_pushed = 1;
 [e = _btn1_pushed -> -> 1 `i `a ]
-"108
-[; ;LibreriasPIC/main_v2.c: 108:                 }
+"112
+[; ;LibreriasPIC/main_v2.c: 112:                 }
 }
 [e :U 657 ]
-"110
-[; ;LibreriasPIC/main_v2.c: 110:                 if ( PORTBbits.RB2 == 0 ) {
+"114
+[; ;LibreriasPIC/main_v2.c: 114:                 if ( PORTBbits.RB2 == 0 ) {
 [e $ ! == -> . . _PORTBbits 0 2 `i -> 0 `i 661  ]
 {
-"111
-[; ;LibreriasPIC/main_v2.c: 111:                     _delay((unsigned long)((10)*(8000000UL/4000.0)));
+"115
+[; ;LibreriasPIC/main_v2.c: 115:                     _delay((unsigned long)((10)*(8000000UL/4000.0)));
 [e ( __delay (1 -> * -> -> 10 `i `d / -> -> 8000000 `ul `d .4000.0 `ul ]
-"112
-[; ;LibreriasPIC/main_v2.c: 112:                     while( PORTBbits.RB1 == 0 );
+"116
+[; ;LibreriasPIC/main_v2.c: 116:                     while( PORTBbits.RB1 == 0 );
 [e $U 662  ]
 [e :U 663 ]
 [e :U 662 ]
 [e $ == -> . . _PORTBbits 0 1 `i -> 0 `i 663  ]
 [e :U 664 ]
-"113
-[; ;LibreriasPIC/main_v2.c: 113:                     btn2_pushed = 1;
+"117
+[; ;LibreriasPIC/main_v2.c: 117:                     btn2_pushed = 1;
 [e = _btn2_pushed -> -> 1 `i `a ]
-"114
-[; ;LibreriasPIC/main_v2.c: 114:                 }
+"118
+[; ;LibreriasPIC/main_v2.c: 118:                 }
 }
 [e :U 661 ]
-"116
-[; ;LibreriasPIC/main_v2.c: 116:                 if ( PORTBbits.RB3 == 0 ) {
+"120
+[; ;LibreriasPIC/main_v2.c: 120:                 if ( PORTBbits.RB3 == 0 ) {
 [e $ ! == -> . . _PORTBbits 0 3 `i -> 0 `i 665  ]
 {
-"117
-[; ;LibreriasPIC/main_v2.c: 117:                     _delay((unsigned long)((10)*(8000000UL/4000.0)));
+"121
+[; ;LibreriasPIC/main_v2.c: 121:                     _delay((unsigned long)((10)*(8000000UL/4000.0)));
 [e ( __delay (1 -> * -> -> 10 `i `d / -> -> 8000000 `ul `d .4000.0 `ul ]
-"118
-[; ;LibreriasPIC/main_v2.c: 118:                     while( PORTBbits.RB1 == 0 );
+"122
+[; ;LibreriasPIC/main_v2.c: 122:                     while( PORTBbits.RB1 == 0 );
 [e $U 666  ]
 [e :U 667 ]
 [e :U 666 ]
 [e $ == -> . . _PORTBbits 0 1 `i -> 0 `i 667  ]
 [e :U 668 ]
-"119
-[; ;LibreriasPIC/main_v2.c: 119:                     btn3_pushed = 1;
+"123
+[; ;LibreriasPIC/main_v2.c: 123:                     btn3_pushed = 1;
 [e = _btn3_pushed -> -> 1 `i `a ]
-"120
-[; ;LibreriasPIC/main_v2.c: 120:                 }
+"124
+[; ;LibreriasPIC/main_v2.c: 124:                 }
 }
 [e :U 665 ]
-"122
-[; ;LibreriasPIC/main_v2.c: 122:                 sprintf(strButtons, "%d, %d, %d, %d", btn0_pushed, btn1_pushed, btn2_pushed, btn3_pushed);
+"126
+[; ;LibreriasPIC/main_v2.c: 126:                 sprintf(strButtons, "%d, %d, %d, %d", btn0_pushed, btn1_pushed, btn2_pushed, btn3_pushed);
 [e ( _sprintf (1 , , , , (. , &U _strButtons :s 8C -> _btn0_pushed `i -> _btn1_pushed `i -> _btn2_pushed `i -> _btn3_pushed `i ]
-"123
-[; ;LibreriasPIC/main_v2.c: 123:                 Lcd_Clear();
-[e ( _Lcd_Clear ..  ]
-"124
-[; ;LibreriasPIC/main_v2.c: 124:                 Lcd_Set_Cursor(2, 1);
-[e ( _Lcd_Set_Cursor (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
-"125
-[; ;LibreriasPIC/main_v2.c: 125:                 Lcd_Write_String(strButtons);
-[e ( _Lcd_Write_String (1 -> &U _strButtons `*uc ]
 "127
-[; ;LibreriasPIC/main_v2.c: 127:                 if ( btn0_pushed && btn1_pushed && btn2_pushed && btn3_pushed ) {
+[; ;LibreriasPIC/main_v2.c: 127:                 Lcd_Clear();
+[e ( _Lcd_Clear ..  ]
+"128
+[; ;LibreriasPIC/main_v2.c: 128:                 Lcd_Set_Cursor(2, 1);
+[e ( _Lcd_Set_Cursor (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
+"129
+[; ;LibreriasPIC/main_v2.c: 129:                 Lcd_Write_String(strButtons);
+[e ( _Lcd_Write_String (1 -> &U _strButtons `*uc ]
+"131
+[; ;LibreriasPIC/main_v2.c: 131:                 if ( btn0_pushed && btn1_pushed && btn2_pushed && btn3_pushed ) {
 [e $ ! && && && != -> _btn0_pushed `i -> 0 `i != -> _btn1_pushed `i -> 0 `i != -> _btn2_pushed `i -> 0 `i != -> _btn3_pushed `i -> 0 `i 669  ]
 {
-"128
-[; ;LibreriasPIC/main_v2.c: 128:                     _delay((unsigned long)((500)*(8000000UL/4000.0)));
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 8000000 `ul `d .4000.0 `ul ]
-"129
-[; ;LibreriasPIC/main_v2.c: 129:                     Lcd_Clear();
-[e ( _Lcd_Clear ..  ]
-"130
-[; ;LibreriasPIC/main_v2.c: 130:                     Lcd_Set_Cursor(1, 1);
-[e ( _Lcd_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
-"131
-[; ;LibreriasPIC/main_v2.c: 131:                     Lcd_Write_String("All buttons ok");
-[e ( _Lcd_Write_String (1 :s 9C ]
 "132
 [; ;LibreriasPIC/main_v2.c: 132:                     _delay((unsigned long)((500)*(8000000UL/4000.0)));
 [e ( __delay (1 -> * -> -> 500 `i `d / -> -> 8000000 `ul `d .4000.0 `ul ]
-"134
-[; ;LibreriasPIC/main_v2.c: 134:                     ESTADO_APP = 3;
-[e = _ESTADO_APP -> -> 3 `i `uc ]
-"136
-[; ;LibreriasPIC/main_v2.c: 136:                     Lcd_Clear();
+"133
+[; ;LibreriasPIC/main_v2.c: 133:                     Lcd_Clear();
 [e ( _Lcd_Clear ..  ]
-"137
-[; ;LibreriasPIC/main_v2.c: 137:                     Lcd_Set_Cursor(1, 1);
+"134
+[; ;LibreriasPIC/main_v2.c: 134:                     Lcd_Set_Cursor(1, 1);
 [e ( _Lcd_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
+"135
+[; ;LibreriasPIC/main_v2.c: 135:                     Lcd_Write_String("All buttons ok");
+[e ( _Lcd_Write_String (1 :s 9C ]
+"136
+[; ;LibreriasPIC/main_v2.c: 136:                     _delay((unsigned long)((500)*(8000000UL/4000.0)));
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 8000000 `ul `d .4000.0 `ul ]
 "138
-[; ;LibreriasPIC/main_v2.c: 138:                     Lcd_Write_String("Probando leds...");
-[e ( _Lcd_Write_String (1 :s 10C ]
-"139
-[; ;LibreriasPIC/main_v2.c: 139:                     Message_Lcd_ok();
-[e ( _Message_Lcd_ok ..  ]
+[; ;LibreriasPIC/main_v2.c: 138:                     ESTADO_APP = 3;
+[e = _ESTADO_APP -> -> 3 `i `uc ]
 "140
-[; ;LibreriasPIC/main_v2.c: 140:                 }
+[; ;LibreriasPIC/main_v2.c: 140:                     Lcd_Clear();
+[e ( _Lcd_Clear ..  ]
+"141
+[; ;LibreriasPIC/main_v2.c: 141:                     Lcd_Set_Cursor(1, 1);
+[e ( _Lcd_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
+"142
+[; ;LibreriasPIC/main_v2.c: 142:                     Lcd_Write_String("Probando leds...");
+[e ( _Lcd_Write_String (1 :s 10C ]
+"143
+[; ;LibreriasPIC/main_v2.c: 143:                     Message_Lcd_ok();
+[e ( _Message_Lcd_ok ..  ]
+"144
+[; ;LibreriasPIC/main_v2.c: 144:                 }
 }
 [e :U 669 ]
-"142
-[; ;LibreriasPIC/main_v2.c: 142:                 break;
-[e $U 643  ]
-"144
-[; ;LibreriasPIC/main_v2.c: 144:             case 3:
-[e :U 670 ]
 "146
-[; ;LibreriasPIC/main_v2.c: 146:                 LATD = 0xff;
-[e = _LATD -> -> 255 `i `uc ]
+[; ;LibreriasPIC/main_v2.c: 146:                 break;
+[e $U 643  ]
 "148
-[; ;LibreriasPIC/main_v2.c: 148:                 if ( PORTBbits.RB1 == 0 || PORTBbits.RB2 == 0) {
+[; ;LibreriasPIC/main_v2.c: 148:             case 3:
+[e :U 670 ]
+"150
+[; ;LibreriasPIC/main_v2.c: 150:                 LATD = 0xff;
+[e = _LATD -> -> 255 `i `uc ]
+"152
+[; ;LibreriasPIC/main_v2.c: 152:                 if ( PORTBbits.RB1 == 0 || PORTBbits.RB2 == 0) {
 [e $ ! || == -> . . _PORTBbits 0 1 `i -> 0 `i == -> . . _PORTBbits 0 2 `i -> 0 `i 671  ]
 {
-"150
-[; ;LibreriasPIC/main_v2.c: 150:                     ESTADO_APP = 8;
-[e = _ESTADO_APP -> -> 8 `i `uc ]
-"152
-[; ;LibreriasPIC/main_v2.c: 152:                     Lcd_Clear();
-[e ( _Lcd_Clear ..  ]
-"153
-[; ;LibreriasPIC/main_v2.c: 153:                     Lcd_Set_Cursor(1, 1);
-[e ( _Lcd_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
 "154
-[; ;LibreriasPIC/main_v2.c: 154:                     Lcd_Write_String("Leds Mux func?");
-[e ( _Lcd_Write_String (1 :s 11C ]
-"155
-[; ;LibreriasPIC/main_v2.c: 155:                     Message_Lcd_ok();
-[e ( _Message_Lcd_ok ..  ]
+[; ;LibreriasPIC/main_v2.c: 154:                     ESTADO_APP = 8;
+[e = _ESTADO_APP -> -> 8 `i `uc ]
 "156
-[; ;LibreriasPIC/main_v2.c: 156:                     _delay((unsigned long)((1500)*(8000000UL/4000.0)));
-[e ( __delay (1 -> * -> -> 1500 `i `d / -> -> 8000000 `ul `d .4000.0 `ul ]
+[; ;LibreriasPIC/main_v2.c: 156:                     Lcd_Clear();
+[e ( _Lcd_Clear ..  ]
 "157
-[; ;LibreriasPIC/main_v2.c: 157:                 }
+[; ;LibreriasPIC/main_v2.c: 157:                     Lcd_Set_Cursor(1, 1);
+[e ( _Lcd_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
+"158
+[; ;LibreriasPIC/main_v2.c: 158:                     Lcd_Write_String("Leds Mux func?");
+[e ( _Lcd_Write_String (1 :s 11C ]
+"159
+[; ;LibreriasPIC/main_v2.c: 159:                     Message_Lcd_ok();
+[e ( _Message_Lcd_ok ..  ]
+"160
+[; ;LibreriasPIC/main_v2.c: 160:                     _delay((unsigned long)((1500)*(8000000UL/4000.0)));
+[e ( __delay (1 -> * -> -> 1500 `i `d / -> -> 8000000 `ul `d .4000.0 `ul ]
+"161
+[; ;LibreriasPIC/main_v2.c: 161:                 }
 }
 [e :U 671 ]
-"159
-[; ;LibreriasPIC/main_v2.c: 159:                 break;
+"163
+[; ;LibreriasPIC/main_v2.c: 163:                 break;
 [e $U 643  ]
-"161
-[; ;LibreriasPIC/main_v2.c: 161:             case 8:
-[e :U 672 ]
-"164
-[; ;LibreriasPIC/main_v2.c: 164:                 LATCbits.LATC0 = 1;
-[e = . . _LATCbits 0 0 -> -> 1 `i `uc ]
 "165
-[; ;LibreriasPIC/main_v2.c: 165:                 LATEbits.LATE2 = 1;
-[e = . . _LATEbits 0 2 -> -> 1 `i `uc ]
-"166
-[; ;LibreriasPIC/main_v2.c: 166:                 LATEbits.LATE1 = 1;
-[e = . . _LATEbits 0 1 -> -> 1 `i `uc ]
-"167
-[; ;LibreriasPIC/main_v2.c: 167:                 LATEbits.LATE0 = 1;
-[e = . . _LATEbits 0 0 -> -> 1 `i `uc ]
+[; ;LibreriasPIC/main_v2.c: 165:             case 8:
+[e :U 672 ]
+"168
+[; ;LibreriasPIC/main_v2.c: 168:                 LATCbits.LATC0 = 1;
+[e = . . _LATCbits 0 0 -> -> 1 `i `uc ]
 "169
-[; ;LibreriasPIC/main_v2.c: 169:                 LATD = AnodoComun7Seg[8];
-[e = _LATD *U + &U _AnodoComun7Seg * -> -> -> 8 `i `ui `ux -> -> # *U &U _AnodoComun7Seg `ui `ux ]
+[; ;LibreriasPIC/main_v2.c: 169:                 LATEbits.LATE2 = 1;
+[e = . . _LATEbits 0 2 -> -> 1 `i `uc ]
+"170
+[; ;LibreriasPIC/main_v2.c: 170:                 LATEbits.LATE1 = 1;
+[e = . . _LATEbits 0 1 -> -> 1 `i `uc ]
 "171
-[; ;LibreriasPIC/main_v2.c: 171:                 LATCbits.LATC0 = 0;
-[e = . . _LATCbits 0 0 -> -> 0 `i `uc ]
-"172
-[; ;LibreriasPIC/main_v2.c: 172:                 _delay((unsigned long)((2)*(8000000UL/4000.0)));
-[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 8000000 `ul `d .4000.0 `ul ]
+[; ;LibreriasPIC/main_v2.c: 171:                 LATEbits.LATE0 = 1;
+[e = . . _LATEbits 0 0 -> -> 1 `i `uc ]
+"173
+[; ;LibreriasPIC/main_v2.c: 173:                 LATD = AnodoComun7Seg[9];
+[e = _LATD *U + &U _AnodoComun7Seg * -> -> -> 9 `i `ui `ux -> -> # *U &U _AnodoComun7Seg `ui `ux ]
 "175
-[; ;LibreriasPIC/main_v2.c: 175:                 LATCbits.LATC0 = 1;
-[e = . . _LATCbits 0 0 -> -> 1 `i `uc ]
+[; ;LibreriasPIC/main_v2.c: 175:                 LATCbits.LATC0 = 0;
+[e = . . _LATCbits 0 0 -> -> 0 `i `uc ]
 "176
-[; ;LibreriasPIC/main_v2.c: 176:                 LATEbits.LATE2 = 1;
-[e = . . _LATEbits 0 2 -> -> 1 `i `uc ]
-"177
-[; ;LibreriasPIC/main_v2.c: 177:                 LATEbits.LATE1 = 1;
-[e = . . _LATEbits 0 1 -> -> 1 `i `uc ]
-"178
-[; ;LibreriasPIC/main_v2.c: 178:                 LATEbits.LATE0 = 1;
-[e = . . _LATEbits 0 0 -> -> 1 `i `uc ]
+[; ;LibreriasPIC/main_v2.c: 176:                 _delay((unsigned long)((2)*(8000000UL/4000.0)));
+[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 8000000 `ul `d .4000.0 `ul ]
+"179
+[; ;LibreriasPIC/main_v2.c: 179:                 LATCbits.LATC0 = 1;
+[e = . . _LATCbits 0 0 -> -> 1 `i `uc ]
 "180
-[; ;LibreriasPIC/main_v2.c: 180:                 LATD = AnodoComun7Seg[8];
-[e = _LATD *U + &U _AnodoComun7Seg * -> -> -> 8 `i `ui `ux -> -> # *U &U _AnodoComun7Seg `ui `ux ]
+[; ;LibreriasPIC/main_v2.c: 180:                 LATEbits.LATE2 = 1;
+[e = . . _LATEbits 0 2 -> -> 1 `i `uc ]
 "181
-[; ;LibreriasPIC/main_v2.c: 181:                 LATEbits.LATE2 = 0;
-[e = . . _LATEbits 0 2 -> -> 0 `i `uc ]
+[; ;LibreriasPIC/main_v2.c: 181:                 LATEbits.LATE1 = 1;
+[e = . . _LATEbits 0 1 -> -> 1 `i `uc ]
 "182
-[; ;LibreriasPIC/main_v2.c: 182:                 _delay((unsigned long)((2)*(8000000UL/4000.0)));
-[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 8000000 `ul `d .4000.0 `ul ]
+[; ;LibreriasPIC/main_v2.c: 182:                 LATEbits.LATE0 = 1;
+[e = . . _LATEbits 0 0 -> -> 1 `i `uc ]
+"184
+[; ;LibreriasPIC/main_v2.c: 184:                 LATD = AnodoComun7Seg[8];
+[e = _LATD *U + &U _AnodoComun7Seg * -> -> -> 8 `i `ui `ux -> -> # *U &U _AnodoComun7Seg `ui `ux ]
 "185
-[; ;LibreriasPIC/main_v2.c: 185:                 LATCbits.LATC0 = 1;
-[e = . . _LATCbits 0 0 -> -> 1 `i `uc ]
+[; ;LibreriasPIC/main_v2.c: 185:                 LATEbits.LATE2 = 0;
+[e = . . _LATEbits 0 2 -> -> 0 `i `uc ]
 "186
-[; ;LibreriasPIC/main_v2.c: 186:                 LATEbits.LATE2 = 1;
-[e = . . _LATEbits 0 2 -> -> 1 `i `uc ]
-"187
-[; ;LibreriasPIC/main_v2.c: 187:                 LATEbits.LATE1 = 1;
-[e = . . _LATEbits 0 1 -> -> 1 `i `uc ]
-"188
-[; ;LibreriasPIC/main_v2.c: 188:                 LATEbits.LATE0 = 1;
-[e = . . _LATEbits 0 0 -> -> 1 `i `uc ]
-"190
-[; ;LibreriasPIC/main_v2.c: 190:                 LATD = AnodoComun7Seg[8];
-[e = _LATD *U + &U _AnodoComun7Seg * -> -> -> 8 `i `ui `ux -> -> # *U &U _AnodoComun7Seg `ui `ux ]
-"191
-[; ;LibreriasPIC/main_v2.c: 191:                 LATEbits.LATE1 = 0;
-[e = . . _LATEbits 0 1 -> -> 0 `i `uc ]
-"192
-[; ;LibreriasPIC/main_v2.c: 192:                 _delay((unsigned long)((2)*(8000000UL/4000.0)));
+[; ;LibreriasPIC/main_v2.c: 186:                 _delay((unsigned long)((2)*(8000000UL/4000.0)));
 [e ( __delay (1 -> * -> -> 2 `i `d / -> -> 8000000 `ul `d .4000.0 `ul ]
-"195
-[; ;LibreriasPIC/main_v2.c: 195:                 LATCbits.LATC0 = 1;
+"189
+[; ;LibreriasPIC/main_v2.c: 189:                 LATCbits.LATC0 = 1;
 [e = . . _LATCbits 0 0 -> -> 1 `i `uc ]
-"196
-[; ;LibreriasPIC/main_v2.c: 196:                 LATEbits.LATE2 = 1;
+"190
+[; ;LibreriasPIC/main_v2.c: 190:                 LATEbits.LATE2 = 1;
 [e = . . _LATEbits 0 2 -> -> 1 `i `uc ]
-"197
-[; ;LibreriasPIC/main_v2.c: 197:                 LATEbits.LATE1 = 1;
+"191
+[; ;LibreriasPIC/main_v2.c: 191:                 LATEbits.LATE1 = 1;
 [e = . . _LATEbits 0 1 -> -> 1 `i `uc ]
-"198
-[; ;LibreriasPIC/main_v2.c: 198:                 LATEbits.LATE0 = 1;
+"192
+[; ;LibreriasPIC/main_v2.c: 192:                 LATEbits.LATE0 = 1;
 [e = . . _LATEbits 0 0 -> -> 1 `i `uc ]
-"200
-[; ;LibreriasPIC/main_v2.c: 200:                 LATD = AnodoComun7Seg[8];
-[e = _LATD *U + &U _AnodoComun7Seg * -> -> -> 8 `i `ui `ux -> -> # *U &U _AnodoComun7Seg `ui `ux ]
-"201
-[; ;LibreriasPIC/main_v2.c: 201:                 LATEbits.LATE0 = 0;
-[e = . . _LATEbits 0 0 -> -> 0 `i `uc ]
-"203
-[; ;LibreriasPIC/main_v2.c: 203:                 _delay((unsigned long)((2)*(8000000UL/4000.0)));
+"194
+[; ;LibreriasPIC/main_v2.c: 194:                 LATD = AnodoComun7Seg[7];
+[e = _LATD *U + &U _AnodoComun7Seg * -> -> -> 7 `i `ui `ux -> -> # *U &U _AnodoComun7Seg `ui `ux ]
+"195
+[; ;LibreriasPIC/main_v2.c: 195:                 LATEbits.LATE1 = 0;
+[e = . . _LATEbits 0 1 -> -> 0 `i `uc ]
+"196
+[; ;LibreriasPIC/main_v2.c: 196:                 _delay((unsigned long)((2)*(8000000UL/4000.0)));
 [e ( __delay (1 -> * -> -> 2 `i `d / -> -> 8000000 `ul `d .4000.0 `ul ]
+"199
+[; ;LibreriasPIC/main_v2.c: 199:                 LATCbits.LATC0 = 1;
+[e = . . _LATCbits 0 0 -> -> 1 `i `uc ]
+"200
+[; ;LibreriasPIC/main_v2.c: 200:                 LATEbits.LATE2 = 1;
+[e = . . _LATEbits 0 2 -> -> 1 `i `uc ]
+"201
+[; ;LibreriasPIC/main_v2.c: 201:                 LATEbits.LATE1 = 1;
+[e = . . _LATEbits 0 1 -> -> 1 `i `uc ]
+"202
+[; ;LibreriasPIC/main_v2.c: 202:                 LATEbits.LATE0 = 1;
+[e = . . _LATEbits 0 0 -> -> 1 `i `uc ]
+"204
+[; ;LibreriasPIC/main_v2.c: 204:                 LATD = AnodoComun7Seg[6];
+[e = _LATD *U + &U _AnodoComun7Seg * -> -> -> 6 `i `ui `ux -> -> # *U &U _AnodoComun7Seg `ui `ux ]
 "205
-[; ;LibreriasPIC/main_v2.c: 205:                 if ( PORTBbits.RB1 == 0 || PORTBbits.RB2 == 0) {
+[; ;LibreriasPIC/main_v2.c: 205:                 LATEbits.LATE0 = 0;
+[e = . . _LATEbits 0 0 -> -> 0 `i `uc ]
+"207
+[; ;LibreriasPIC/main_v2.c: 207:                 _delay((unsigned long)((2)*(8000000UL/4000.0)));
+[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 8000000 `ul `d .4000.0 `ul ]
+"209
+[; ;LibreriasPIC/main_v2.c: 209:                 if ( PORTBbits.RB1 == 0 || PORTBbits.RB2 == 0) {
 [e $ ! || == -> . . _PORTBbits 0 1 `i -> 0 `i == -> . . _PORTBbits 0 2 `i -> 0 `i 673  ]
 {
-"207
-[; ;LibreriasPIC/main_v2.c: 207:                     ESTADO_APP = 4;
-[e = _ESTADO_APP -> -> 4 `i `uc ]
-"209
-[; ;LibreriasPIC/main_v2.c: 209:                     Lcd_Clear();
-[e ( _Lcd_Clear ..  ]
-"210
-[; ;LibreriasPIC/main_v2.c: 210:                     Lcd_Set_Cursor(1, 1);
-[e ( _Lcd_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
 "211
-[; ;LibreriasPIC/main_v2.c: 211:                     Lcd_Write_String("Relays func?...");
-[e ( _Lcd_Write_String (1 :s 12C ]
-"212
-[; ;LibreriasPIC/main_v2.c: 212:                     Message_Lcd_ok();
-[e ( _Message_Lcd_ok ..  ]
+[; ;LibreriasPIC/main_v2.c: 211:                     ESTADO_APP = 4;
+[e = _ESTADO_APP -> -> 4 `i `uc ]
 "213
-[; ;LibreriasPIC/main_v2.c: 213:                     _delay((unsigned long)((1500)*(8000000UL/4000.0)));
-[e ( __delay (1 -> * -> -> 1500 `i `d / -> -> 8000000 `ul `d .4000.0 `ul ]
+[; ;LibreriasPIC/main_v2.c: 213:                     Lcd_Clear();
+[e ( _Lcd_Clear ..  ]
 "214
-[; ;LibreriasPIC/main_v2.c: 214:                 }
+[; ;LibreriasPIC/main_v2.c: 214:                     Lcd_Set_Cursor(1, 1);
+[e ( _Lcd_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
+"215
+[; ;LibreriasPIC/main_v2.c: 215:                     Lcd_Write_String("Relays func?...");
+[e ( _Lcd_Write_String (1 :s 12C ]
+"216
+[; ;LibreriasPIC/main_v2.c: 216:                     Message_Lcd_ok();
+[e ( _Message_Lcd_ok ..  ]
+"217
+[; ;LibreriasPIC/main_v2.c: 217:                     _delay((unsigned long)((1500)*(8000000UL/4000.0)));
+[e ( __delay (1 -> * -> -> 1500 `i `d / -> -> 8000000 `ul `d .4000.0 `ul ]
+"218
+[; ;LibreriasPIC/main_v2.c: 218:                 }
 }
 [e :U 673 ]
-"217
-[; ;LibreriasPIC/main_v2.c: 217:                 break;
+"221
+[; ;LibreriasPIC/main_v2.c: 221:                 break;
 [e $U 643  ]
-"219
-[; ;LibreriasPIC/main_v2.c: 219:             case 4:
+"223
+[; ;LibreriasPIC/main_v2.c: 223:             case 4:
 [e :U 674 ]
-"222
-[; ;LibreriasPIC/main_v2.c: 222:                 if ( PORTBbits.RB0 == 0 ) {
+"226
+[; ;LibreriasPIC/main_v2.c: 226:                 if ( PORTBbits.RB0 == 0 ) {
 [e $ ! == -> . . _PORTBbits 0 0 `i -> 0 `i 675  ]
 {
-"223
-[; ;LibreriasPIC/main_v2.c: 223:                     _delay((unsigned long)((10)*(8000000UL/4000.0)));
+"227
+[; ;LibreriasPIC/main_v2.c: 227:                     _delay((unsigned long)((10)*(8000000UL/4000.0)));
 [e ( __delay (1 -> * -> -> 10 `i `d / -> -> 8000000 `ul `d .4000.0 `ul ]
-"224
-[; ;LibreriasPIC/main_v2.c: 224:                     while( PORTBbits.RB0 == 0 );
+"228
+[; ;LibreriasPIC/main_v2.c: 228:                     while( PORTBbits.RB0 == 0 );
 [e $U 676  ]
 [e :U 677 ]
 [e :U 676 ]
 [e $ == -> . . _PORTBbits 0 0 `i -> 0 `i 677  ]
 [e :U 678 ]
-"225
-[; ;LibreriasPIC/main_v2.c: 225:                     LATEbits.LE0 = ~LATEbits.LE0;
+"229
+[; ;LibreriasPIC/main_v2.c: 229:                     LATEbits.LE0 = ~LATEbits.LE0;
 [e = . . _LATEbits 1 0 -> ~ -> . . _LATEbits 1 0 `i `uc ]
-"226
-[; ;LibreriasPIC/main_v2.c: 226:                     LATBbits.LB4 = ~LATBbits.LB4;
+"230
+[; ;LibreriasPIC/main_v2.c: 230:                     LATBbits.LB4 = ~LATBbits.LB4;
 [e = . . _LATBbits 1 4 -> ~ -> . . _LATBbits 1 4 `i `uc ]
-"227
-[; ;LibreriasPIC/main_v2.c: 227:                 }
+"231
+[; ;LibreriasPIC/main_v2.c: 231:                 }
 }
 [e :U 675 ]
-"229
-[; ;LibreriasPIC/main_v2.c: 229:                 if ( PORTBbits.RB1 == 0 ) {
+"233
+[; ;LibreriasPIC/main_v2.c: 233:                 if ( PORTBbits.RB1 == 0 ) {
 [e $ ! == -> . . _PORTBbits 0 1 `i -> 0 `i 679  ]
 {
-"230
-[; ;LibreriasPIC/main_v2.c: 230:                     _delay((unsigned long)((10)*(8000000UL/4000.0)));
+"234
+[; ;LibreriasPIC/main_v2.c: 234:                     _delay((unsigned long)((10)*(8000000UL/4000.0)));
 [e ( __delay (1 -> * -> -> 10 `i `d / -> -> 8000000 `ul `d .4000.0 `ul ]
-"231
-[; ;LibreriasPIC/main_v2.c: 231:                     while( PORTBbits.RB1 == 0 );
+"235
+[; ;LibreriasPIC/main_v2.c: 235:                     while( PORTBbits.RB1 == 0 );
 [e $U 680  ]
 [e :U 681 ]
 [e :U 680 ]
 [e $ == -> . . _PORTBbits 0 1 `i -> 0 `i 681  ]
 [e :U 682 ]
-"232
-[; ;LibreriasPIC/main_v2.c: 232:                     Lcd_Clear();
-[e ( _Lcd_Clear ..  ]
-"233
-[; ;LibreriasPIC/main_v2.c: 233:                     Lcd_Set_Cursor(1, 1);
-[e ( _Lcd_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
-"234
-[; ;LibreriasPIC/main_v2.c: 234:                     Lcd_Write_String("Relays bien!");
-[e ( _Lcd_Write_String (1 :s 13C ]
-"235
-[; ;LibreriasPIC/main_v2.c: 235:                     Lcd_Set_Cursor(2, 1);
-[e ( _Lcd_Set_Cursor (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
 "236
-[; ;LibreriasPIC/main_v2.c: 236:                     Lcd_Write_String("Init test Buzzer");
-[e ( _Lcd_Write_String (1 :s 14C ]
+[; ;LibreriasPIC/main_v2.c: 236:                     Lcd_Clear();
+[e ( _Lcd_Clear ..  ]
 "237
-[; ;LibreriasPIC/main_v2.c: 237:                     _delay((unsigned long)((1000)*(8000000UL/4000.0)));
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 8000000 `ul `d .4000.0 `ul ]
+[; ;LibreriasPIC/main_v2.c: 237:                     Lcd_Set_Cursor(1, 1);
+[e ( _Lcd_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
+"238
+[; ;LibreriasPIC/main_v2.c: 238:                     Lcd_Write_String("Relays bien!");
+[e ( _Lcd_Write_String (1 :s 13C ]
 "239
-[; ;LibreriasPIC/main_v2.c: 239:                     ESTADO_APP = 7;
-[e = _ESTADO_APP -> -> 7 `i `uc ]
+[; ;LibreriasPIC/main_v2.c: 239:                     Lcd_Set_Cursor(2, 1);
+[e ( _Lcd_Set_Cursor (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
 "240
-[; ;LibreriasPIC/main_v2.c: 240:                 }
+[; ;LibreriasPIC/main_v2.c: 240:                     Lcd_Write_String("Init TEST_USART");
+[e ( _Lcd_Write_String (1 :s 14C ]
+"241
+[; ;LibreriasPIC/main_v2.c: 241:                     _delay((unsigned long)((1000)*(8000000UL/4000.0)));
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 8000000 `ul `d .4000.0 `ul ]
+"243
+[; ;LibreriasPIC/main_v2.c: 243:                     ESTADO_APP = 9;
+[e = _ESTADO_APP -> -> 9 `i `uc ]
+"244
+[; ;LibreriasPIC/main_v2.c: 244:                 }
 }
 [e :U 679 ]
-"242
-[; ;LibreriasPIC/main_v2.c: 242:                 if ( PORTBbits.RB2 == 0 ) {
+"246
+[; ;LibreriasPIC/main_v2.c: 246:                 if ( PORTBbits.RB2 == 0 ) {
 [e $ ! == -> . . _PORTBbits 0 2 `i -> 0 `i 683  ]
 {
-"243
-[; ;LibreriasPIC/main_v2.c: 243:                     _delay((unsigned long)((10)*(8000000UL/4000.0)));
+"247
+[; ;LibreriasPIC/main_v2.c: 247:                     _delay((unsigned long)((10)*(8000000UL/4000.0)));
 [e ( __delay (1 -> * -> -> 10 `i `d / -> -> 8000000 `ul `d .4000.0 `ul ]
-"244
-[; ;LibreriasPIC/main_v2.c: 244:                     while( PORTBbits.RB1 == 0 );
+"248
+[; ;LibreriasPIC/main_v2.c: 248:                     while( PORTBbits.RB1 == 0 );
 [e $U 684  ]
 [e :U 685 ]
 [e :U 684 ]
 [e $ == -> . . _PORTBbits 0 1 `i -> 0 `i 685  ]
 [e :U 686 ]
-"245
-[; ;LibreriasPIC/main_v2.c: 245:                     Lcd_Clear();
-[e ( _Lcd_Clear ..  ]
-"246
-[; ;LibreriasPIC/main_v2.c: 246:                     Lcd_Set_Cursor(1, 1);
-[e ( _Lcd_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
-"247
-[; ;LibreriasPIC/main_v2.c: 247:                     Lcd_Write_String("Relays mal!");
-[e ( _Lcd_Write_String (1 :s 15C ]
-"248
-[; ;LibreriasPIC/main_v2.c: 248:                     Lcd_Set_Cursor(2, 1);
-[e ( _Lcd_Set_Cursor (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
 "249
-[; ;LibreriasPIC/main_v2.c: 249:                     Lcd_Write_String("Init test Buzzer");
-[e ( _Lcd_Write_String (1 :s 16C ]
+[; ;LibreriasPIC/main_v2.c: 249:                     Lcd_Clear();
+[e ( _Lcd_Clear ..  ]
 "250
-[; ;LibreriasPIC/main_v2.c: 250:                     _delay((unsigned long)((1000)*(8000000UL/4000.0)));
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 8000000 `ul `d .4000.0 `ul ]
+[; ;LibreriasPIC/main_v2.c: 250:                     Lcd_Set_Cursor(1, 1);
+[e ( _Lcd_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
+"251
+[; ;LibreriasPIC/main_v2.c: 251:                     Lcd_Write_String("Relays mal!");
+[e ( _Lcd_Write_String (1 :s 15C ]
 "252
-[; ;LibreriasPIC/main_v2.c: 252:                     ESTADO_APP = 7;
-[e = _ESTADO_APP -> -> 7 `i `uc ]
+[; ;LibreriasPIC/main_v2.c: 252:                     Lcd_Set_Cursor(2, 1);
+[e ( _Lcd_Set_Cursor (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
 "253
-[; ;LibreriasPIC/main_v2.c: 253:                 }
+[; ;LibreriasPIC/main_v2.c: 253:                     Lcd_Write_String("Init TEST_USART");
+[e ( _Lcd_Write_String (1 :s 16C ]
+"254
+[; ;LibreriasPIC/main_v2.c: 254:                     _delay((unsigned long)((1000)*(8000000UL/4000.0)));
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 8000000 `ul `d .4000.0 `ul ]
+"256
+[; ;LibreriasPIC/main_v2.c: 256:                     ESTADO_APP = 9;
+[e = _ESTADO_APP -> -> 9 `i `uc ]
+"257
+[; ;LibreriasPIC/main_v2.c: 257:                 }
 }
 [e :U 683 ]
-"254
-[; ;LibreriasPIC/main_v2.c: 254:                 break;
+"258
+[; ;LibreriasPIC/main_v2.c: 258:                 break;
 [e $U 643  ]
-"298
-[; ;LibreriasPIC/main_v2.c: 298:             case 7:
+"260
+[; ;LibreriasPIC/main_v2.c: 260:             case 9:
 [e :U 687 ]
-"300
-[; ;LibreriasPIC/main_v2.c: 300:                 Lcd_Clear();
+"264
+[; ;LibreriasPIC/main_v2.c: 264:                 dataRx = USART_ReadByte();
+[e = _dataRx ( _USART_ReadByte ..  ]
+"266
+[; ;LibreriasPIC/main_v2.c: 266:                 if(dataRx == 'A')
+[e $ ! == -> _dataRx `ui -> 65 `ui 688  ]
+"267
+[; ;LibreriasPIC/main_v2.c: 267:                 {
+{
+"268
+[; ;LibreriasPIC/main_v2.c: 268:                     LATD = 255;
+[e = _LATD -> -> 255 `i `uc ]
+"269
+[; ;LibreriasPIC/main_v2.c: 269:                     LATEbits.LATE2 = 1;
+[e = . . _LATEbits 0 2 -> -> 1 `i `uc ]
+"270
+[; ;LibreriasPIC/main_v2.c: 270:                     USART_WriteString("LED 1 ON \r\n");
+[e ( _USART_WriteString (1 :s 17C ]
+"271
+[; ;LibreriasPIC/main_v2.c: 271:                 }
+}
+[e $U 689  ]
+"272
+[; ;LibreriasPIC/main_v2.c: 272:                 else if(dataRx == 'B')
+[e :U 688 ]
+[e $ ! == -> _dataRx `ui -> 66 `ui 690  ]
+"273
+[; ;LibreriasPIC/main_v2.c: 273:                 {
+{
+"274
+[; ;LibreriasPIC/main_v2.c: 274:                     LATD = 0;
+[e = _LATD -> -> 0 `i `uc ]
+"275
+[; ;LibreriasPIC/main_v2.c: 275:                     LATEbits.LATE2 = 0;
+[e = . . _LATEbits 0 2 -> -> 0 `i `uc ]
+"276
+[; ;LibreriasPIC/main_v2.c: 276:                     USART_WriteString("LED 1 OFF \r\n");
+[e ( _USART_WriteString (1 :s 18C ]
+"277
+[; ;LibreriasPIC/main_v2.c: 277:                 }
+}
+[e :U 690 ]
+[e :U 689 ]
+"279
+[; ;LibreriasPIC/main_v2.c: 279:                 if ( PORTBbits.RB2 == 0) {
+[e $ ! == -> . . _PORTBbits 0 2 `i -> 0 `i 691  ]
+{
+"281
+[; ;LibreriasPIC/main_v2.c: 281:                     ESTADO_APP = 7;
+[e = _ESTADO_APP -> -> 7 `i `uc ]
+"283
+[; ;LibreriasPIC/main_v2.c: 283:                     Lcd_Clear();
 [e ( _Lcd_Clear ..  ]
-"301
-[; ;LibreriasPIC/main_v2.c: 301:                 Lcd_Set_Cursor(1, 1);
+"284
+[; ;LibreriasPIC/main_v2.c: 284:                     Lcd_Set_Cursor(1, 1);
 [e ( _Lcd_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
-"302
-[; ;LibreriasPIC/main_v2.c: 302:                 Lcd_Write_String("Felicidades");
-[e ( _Lcd_Write_String (1 :s 17C ]
-"303
-[; ;LibreriasPIC/main_v2.c: 303:                 Lcd_Set_Cursor(2, 1);
-[e ( _Lcd_Set_Cursor (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
-"304
-[; ;LibreriasPIC/main_v2.c: 304:                 Lcd_Write_String("Test completado");
-[e ( _Lcd_Write_String (1 :s 18C ]
-"307
-[; ;LibreriasPIC/main_v2.c: 307:                 break;
+"285
+[; ;LibreriasPIC/main_v2.c: 285:                     Lcd_Write_String("USART FINISH...");
+[e ( _Lcd_Write_String (1 :s 19C ]
+"286
+[; ;LibreriasPIC/main_v2.c: 286:                     Message_Lcd_ok();
+[e ( _Message_Lcd_ok ..  ]
+"287
+[; ;LibreriasPIC/main_v2.c: 287:                     _delay((unsigned long)((1500)*(8000000UL/4000.0)));
+[e ( __delay (1 -> * -> -> 1500 `i `d / -> -> 8000000 `ul `d .4000.0 `ul ]
+"288
+[; ;LibreriasPIC/main_v2.c: 288:                 }
+}
+[e :U 691 ]
+"292
+[; ;LibreriasPIC/main_v2.c: 292:                 break;
 [e $U 643  ]
-"309
-[; ;LibreriasPIC/main_v2.c: 309:         }
+"337
+[; ;LibreriasPIC/main_v2.c: 337:             case 7:
+[e :U 692 ]
+"339
+[; ;LibreriasPIC/main_v2.c: 339:                 Lcd_Clear();
+[e ( _Lcd_Clear ..  ]
+"340
+[; ;LibreriasPIC/main_v2.c: 340:                 Lcd_Set_Cursor(1, 1);
+[e ( _Lcd_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
+"341
+[; ;LibreriasPIC/main_v2.c: 341:                 Lcd_Write_String("Felicidades");
+[e ( _Lcd_Write_String (1 :s 20C ]
+"342
+[; ;LibreriasPIC/main_v2.c: 342:                 Lcd_Set_Cursor(2, 1);
+[e ( _Lcd_Set_Cursor (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
+"343
+[; ;LibreriasPIC/main_v2.c: 343:                 Lcd_Write_String("Test completado");
+[e ( _Lcd_Write_String (1 :s 21C ]
+"346
+[; ;LibreriasPIC/main_v2.c: 346:                 break;
+[e $U 643  ]
+"348
+[; ;LibreriasPIC/main_v2.c: 348:         }
 }
 [e $U 643  ]
 [e :U 644 ]
@@ -1494,134 +1602,147 @@ Version 4.0 HI-TECH Software Intermediate Code
  , $ -> 3 `i 670
  , $ -> 8 `i 672
  , $ -> 4 `i 674
- , $ -> 7 `i 687
+ , $ -> 9 `i 687
+ , $ -> 7 `i 692
  643 ]
 [e :U 643 ]
-"310
-[; ;LibreriasPIC/main_v2.c: 310:     }
+"349
+[; ;LibreriasPIC/main_v2.c: 349:     }
 }
 [e :U 640 ]
 [e $U 641  ]
 [e :U 642 ]
-"311
-[; ;LibreriasPIC/main_v2.c: 311: }
+"350
+[; ;LibreriasPIC/main_v2.c: 350: }
 [e :UE 639 ]
 }
-"314
-[; ;LibreriasPIC/main_v2.c: 314: void Message_Lcd_ok(void) {
+"353
+[; ;LibreriasPIC/main_v2.c: 353: void Message_Lcd_ok(void) {
 [v _Message_Lcd_ok `(v ~T0 @X0 1 ef ]
 {
 [e :U _Message_Lcd_ok ]
 [f ]
-"315
-[; ;LibreriasPIC/main_v2.c: 315:     Lcd_Set_Cursor(2, 1);
+"354
+[; ;LibreriasPIC/main_v2.c: 354:     Lcd_Set_Cursor(2, 1);
 [e ( _Lcd_Set_Cursor (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
-"316
-[; ;LibreriasPIC/main_v2.c: 316:     Lcd_Write_String("ok ? BTN1 : BTN2");
-[e ( _Lcd_Write_String (1 :s 19C ]
-"317
-[; ;LibreriasPIC/main_v2.c: 317: }
-[e :UE 688 ]
+"355
+[; ;LibreriasPIC/main_v2.c: 355:     Lcd_Write_String("ok ? BTN1 : BTN2");
+[e ( _Lcd_Write_String (1 :s 22C ]
+"356
+[; ;LibreriasPIC/main_v2.c: 356: }
+[e :UE 693 ]
 }
-"320
-[; ;LibreriasPIC/main_v2.c: 320: void Port_Init(void) {
+"359
+[; ;LibreriasPIC/main_v2.c: 359: void Port_Init(void) {
 [v _Port_Init `(v ~T0 @X0 1 ef ]
 {
 [e :U _Port_Init ]
 [f ]
-"323
-[; ;LibreriasPIC/main_v2.c: 323:     ANSELD = 0x00;
+"362
+[; ;LibreriasPIC/main_v2.c: 362:     ANSELD = 0x00;
 [e = _ANSELD -> -> 0 `i `uc ]
-"328
-[; ;LibreriasPIC/main_v2.c: 328:     ANSELBbits.ANSB0 = 0;
+"363
+[; ;LibreriasPIC/main_v2.c: 363:     TRISDbits.RD0 = 0;
+[e = . . _TRISDbits 1 0 -> -> 0 `i `uc ]
+"364
+[; ;LibreriasPIC/main_v2.c: 364:     TRISDbits.RD1 = 0;
+[e = . . _TRISDbits 1 1 -> -> 0 `i `uc ]
+"369
+[; ;LibreriasPIC/main_v2.c: 369:     ANSELB = 0X00;
+[e = _ANSELB -> -> 0 `i `uc ]
+"370
+[; ;LibreriasPIC/main_v2.c: 370:     ANSELBbits.ANSB0 = 0;
 [e = . . _ANSELBbits 0 0 -> -> 0 `i `uc ]
-"329
-[; ;LibreriasPIC/main_v2.c: 329:     ANSELBbits.ANSB1 = 0;
+"371
+[; ;LibreriasPIC/main_v2.c: 371:     ANSELBbits.ANSB1 = 0;
 [e = . . _ANSELBbits 0 1 -> -> 0 `i `uc ]
-"330
-[; ;LibreriasPIC/main_v2.c: 330:     ANSELBbits.ANSB2 = 0;
+"372
+[; ;LibreriasPIC/main_v2.c: 372:     ANSELBbits.ANSB2 = 0;
 [e = . . _ANSELBbits 0 2 -> -> 0 `i `uc ]
-"331
-[; ;LibreriasPIC/main_v2.c: 331:     ANSELBbits.ANSB3 = 0;
+"373
+[; ;LibreriasPIC/main_v2.c: 373:     ANSELBbits.ANSB3 = 0;
 [e = . . _ANSELBbits 0 3 -> -> 0 `i `uc ]
-"333
-[; ;LibreriasPIC/main_v2.c: 333:     TRISBbits.RB0 = 1;
+"375
+[; ;LibreriasPIC/main_v2.c: 375:     TRISBbits.RB0 = 1;
 [e = . . _TRISBbits 1 0 -> -> 1 `i `uc ]
-"334
-[; ;LibreriasPIC/main_v2.c: 334:     TRISBbits.RB1 = 1;
+"376
+[; ;LibreriasPIC/main_v2.c: 376:     TRISBbits.RB1 = 1;
 [e = . . _TRISBbits 1 1 -> -> 1 `i `uc ]
-"335
-[; ;LibreriasPIC/main_v2.c: 335:     TRISBbits.RB2 = 1;
+"377
+[; ;LibreriasPIC/main_v2.c: 377:     TRISBbits.RB2 = 1;
 [e = . . _TRISBbits 1 2 -> -> 1 `i `uc ]
-"336
-[; ;LibreriasPIC/main_v2.c: 336:     TRISBbits.RB3 = 1;
+"378
+[; ;LibreriasPIC/main_v2.c: 378:     TRISBbits.RB3 = 1;
 [e = . . _TRISBbits 1 3 -> -> 1 `i `uc ]
-"338
-[; ;LibreriasPIC/main_v2.c: 338:     ANSELBbits.ANSB4 = 0;
+"380
+[; ;LibreriasPIC/main_v2.c: 380:     ANSELBbits.ANSB4 = 0;
 [e = . . _ANSELBbits 0 4 -> -> 0 `i `uc ]
-"339
-[; ;LibreriasPIC/main_v2.c: 339:     TRISBbits.RB4 = 0;
+"381
+[; ;LibreriasPIC/main_v2.c: 381:     TRISBbits.RB4 = 0;
 [e = . . _TRISBbits 1 4 -> -> 0 `i `uc ]
-"343
-[; ;LibreriasPIC/main_v2.c: 343:     ANSELEbits.ANSE2 = 0;
+"385
+[; ;LibreriasPIC/main_v2.c: 385:     ANSELEbits.ANSE2 = 0;
 [e = . . _ANSELEbits 0 2 -> -> 0 `i `uc ]
-"344
-[; ;LibreriasPIC/main_v2.c: 344:     TRISEbits.RE2 = 0;
+"386
+[; ;LibreriasPIC/main_v2.c: 386:     TRISEbits.RE2 = 0;
 [e = . . _TRISEbits 1 2 -> -> 0 `i `uc ]
-"345
-[; ;LibreriasPIC/main_v2.c: 345:     ANSELEbits.ANSE0 = 0;
+"387
+[; ;LibreriasPIC/main_v2.c: 387:     ANSELEbits.ANSE0 = 0;
 [e = . . _ANSELEbits 0 0 -> -> 0 `i `uc ]
-"346
-[; ;LibreriasPIC/main_v2.c: 346:     TRISEbits.RE0 = 0;
+"388
+[; ;LibreriasPIC/main_v2.c: 388:     TRISEbits.RE0 = 0;
 [e = . . _TRISEbits 1 0 -> -> 0 `i `uc ]
-"348
-[; ;LibreriasPIC/main_v2.c: 348:     LATEbits.LE0 = 0;
+"390
+[; ;LibreriasPIC/main_v2.c: 390:     LATEbits.LE0 = 0;
 [e = . . _LATEbits 1 0 -> -> 0 `i `uc ]
-"349
-[; ;LibreriasPIC/main_v2.c: 349:     LATBbits.LB4 = 0;
+"391
+[; ;LibreriasPIC/main_v2.c: 391:     LATBbits.LB4 = 0;
 [e = . . _LATBbits 1 4 -> -> 0 `i `uc ]
-"352
-[; ;LibreriasPIC/main_v2.c: 352:     ANSELEbits.ANSE0 = 0;
+"394
+[; ;LibreriasPIC/main_v2.c: 394:     ANSELEbits.ANSE0 = 0;
 [e = . . _ANSELEbits 0 0 -> -> 0 `i `uc ]
-"353
-[; ;LibreriasPIC/main_v2.c: 353:     ANSELEbits.ANSE1 = 0;
+"395
+[; ;LibreriasPIC/main_v2.c: 395:     ANSELEbits.ANSE1 = 0;
 [e = . . _ANSELEbits 0 1 -> -> 0 `i `uc ]
-"354
-[; ;LibreriasPIC/main_v2.c: 354:     ANSELEbits.ANSE2 = 0;
+"396
+[; ;LibreriasPIC/main_v2.c: 396:     ANSELEbits.ANSE2 = 0;
 [e = . . _ANSELEbits 0 2 -> -> 0 `i `uc ]
-"355
-[; ;LibreriasPIC/main_v2.c: 355:     TRISEbits.TRISE0 = 0;
+"397
+[; ;LibreriasPIC/main_v2.c: 397:     TRISEbits.TRISE0 = 0;
 [e = . . _TRISEbits 0 0 -> -> 0 `i `uc ]
-"356
-[; ;LibreriasPIC/main_v2.c: 356:     TRISEbits.TRISE1 = 0;
+"398
+[; ;LibreriasPIC/main_v2.c: 398:     TRISEbits.TRISE1 = 0;
 [e = . . _TRISEbits 0 1 -> -> 0 `i `uc ]
-"357
-[; ;LibreriasPIC/main_v2.c: 357:     TRISEbits.TRISE2 = 0;
+"399
+[; ;LibreriasPIC/main_v2.c: 399:     TRISEbits.TRISE2 = 0;
 [e = . . _TRISEbits 0 2 -> -> 0 `i `uc ]
-"360
-[; ;LibreriasPIC/main_v2.c: 360:     TRISCbits.TRISC0 = 0;
+"402
+[; ;LibreriasPIC/main_v2.c: 402:     TRISCbits.TRISC0 = 0;
 [e = . . _TRISCbits 0 0 -> -> 0 `i `uc ]
-"361
-[; ;LibreriasPIC/main_v2.c: 361: }
-[e :UE 689 ]
+"403
+[; ;LibreriasPIC/main_v2.c: 403: }
+[e :UE 694 ]
 }
 [p f _sprintf 8388736 ]
 [a 6C 66 117 116 116 111 110 115 32 116 101 115 116 0 ]
 [a 1C 115 116 97 114 116 105 110 103 32 116 101 115 116 0 ]
-[a 17C 70 101 108 105 99 105 100 97 100 101 115 0 ]
-[a 14C 73 110 105 116 32 116 101 115 116 32 66 117 122 122 101 114 0 ]
-[a 16C 73 110 105 116 32 116 101 115 116 32 66 117 122 122 101 114 0 ]
+[a 20C 70 101 108 105 99 105 100 97 100 101 115 0 ]
 [a 2C 111 102 32 116 114 97 105 110 101 114 0 ]
-[a 18C 84 101 115 116 32 99 111 109 112 108 101 116 97 100 111 0 ]
+[a 21C 84 101 115 116 32 99 111 109 112 108 101 116 97 100 111 0 ]
 [a 7C 80 117 115 104 32 97 110 121 32 98 117 116 116 111 110 0 ]
 [a 9C 65 108 108 32 98 117 116 116 111 110 115 32 111 107 0 ]
 [a 8C 37 100 44 32 37 100 44 32 37 100 44 32 37 100 0 ]
 [a 5C 37 100 0 ]
+[a 14C 73 110 105 116 32 84 69 83 84 95 85 83 65 82 84 0 ]
+[a 16C 73 110 105 116 32 84 69 83 84 95 85 83 65 82 84 0 ]
 [a 11C 76 101 100 115 32 77 117 120 32 102 117 110 99 63 0 ]
-[a 19C 111 107 32 63 32 66 84 78 49 32 58 32 66 84 78 50 0 ]
+[a 22C 111 107 32 63 32 66 84 78 49 32 58 32 66 84 78 50 0 ]
 [a 10C 80 114 111 98 97 110 100 111 32 108 101 100 115 46 46 46 0 ]
+[a 19C 85 83 65 82 84 32 70 73 78 73 83 72 46 46 46 0 ]
 [a 12C 82 101 108 97 121 115 32 102 117 110 99 63 46 46 46 0 ]
 [a 3C 73 110 32 46 46 46 0 ]
 [a 4C 73 110 32 46 46 46 0 ]
 [a 13C 82 101 108 97 121 115 32 98 105 101 110 33 0 ]
 [a 15C 82 101 108 97 121 115 32 109 97 108 33 0 ]
+[a 17C 76 69 68 32 49 32 79 78 32 13 10 0 ]
+[a 18C 76 69 68 32 49 32 79 70 70 32 13 10 0 ]
