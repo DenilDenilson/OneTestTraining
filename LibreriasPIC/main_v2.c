@@ -26,7 +26,7 @@ bool btn0_pushed = false;
 bool btn1_pushed = false;
 bool btn2_pushed = false;
 bool btn3_pushed = false;
-bool two_buttons_pushed = false;
+bool continue_test = false;
 
 char strButtons[20];
 
@@ -132,56 +132,22 @@ int main(void) {
             case TEST_LEDS:
                 
                 LATD = 0xff;
-                __delay_ms(2000);
                 
-                while ( BTN1 != 0 || BTN2 != 0 ) {
-                    // Encendiendo leds
-                    for (int i = 0; i <= 7; i++) {
-                        LATD = ( 1 << i ); // Enciende LED i
-                        __delay_ms(250);
-                    }
-
-                    // Apagando leds
-                    for (int i = 0; i <= 7; i++) {
-                        LATD = ( 0 << i ); // Apaga LED i
-                        __delay_ms(250);
-                    }
-                    // (1<<i)) mueve 1 i veces a la izquiera en 0b0000000 siendo
-                    // 0b0000001 para i = 1 y 0b00000010 para i = 2
-                    __delay_ms(100);
-                }
-                
-                if ( BTN1 == 0 ) {
-                    __delay_ms(10);
-                    while( BTN1 == 0 );
+                if ( BTN1 == 0 || BTN2 == 0) {
+                    //continue_test = true;
+                    ESTADO_APP = TEST_RELAYS;
+                    // Testeando relays
                     Lcd_Clear();
                     Lcd_Set_Cursor(1, 1);
-                    Lcd_Write_String("Leds correctos");
-                    Lcd_Set_Cursor(2, 1);
-                    Lcd_Write_String("Init test Relays");
-                    __delay_ms(1000);
-                    ESTADO_APP = TEST_RELAYS;
+                    Lcd_Write_String("Relays func?...");
+                    Message_Lcd_ok();
+                    __delay_ms(1500);
                 }
                 
-                if ( BTN2 == 0 ) {
-                    __delay_ms(10);
-                    while( BTN1 == 0 );
-                    Lcd_Clear();
-                    Lcd_Set_Cursor(1, 1);
-                    Lcd_Write_String("Leds incorrectos");
-                    Lcd_Set_Cursor(2, 1);
-                    Lcd_Write_String("Init test Relays");
-                    __delay_ms(1000);
-                    ESTADO_APP = TEST_RELAYS;
-                }
                 break;
             
             case TEST_RELAYS:
-                // Testeando relays
-                Lcd_Clear();
-                Lcd_Set_Cursor(1, 1);
-                Lcd_Write_String("Relays func?...");
-                //Message_Lcd_Ok();
+                
                 
                 if ( BTN0 == 0 ) {
                     __delay_ms(10);
@@ -199,7 +165,8 @@ int main(void) {
                     Lcd_Set_Cursor(2, 1);
                     Lcd_Write_String("Init test Buzzer");
                     __delay_ms(1000);
-                    ESTADO_APP = TEST_BUZZER;
+                    //ESTADO_APP = TEST_BUZZER;
+                    ESTADO_APP = TEST_COMPLETE;
                 }
                 
                 if ( BTN2 == 0 ) {
@@ -211,47 +178,48 @@ int main(void) {
                     Lcd_Set_Cursor(2, 1);
                     Lcd_Write_String("Init test Buzzer");
                     __delay_ms(1000);
-                    ESTADO_APP = TEST_BUZZER;
+                    //ESTADO_APP = TEST_BUZZER;
+                    ESTADO_APP = TEST_COMPLETE;
                 }                
                 break;
                 
-            case TEST_BUZZER:
-                // Testeando buzzer
-                Lcd_Clear();
-                Lcd_Set_Cursor(1, 1);
-                Lcd_Write_String("Relays func?...");
-                //Message_Lcd_Ok();
-                
-                if ( BTN0 == 0 ) {
-                    __delay_ms(10);
-                    while( BTN0 == 0 );
-                    LATEbits.LATE2 = ~LATEbits.LATE2;
-                }
-                
-                if ( BTN1 == 0 ) {
-                    __delay_ms(10);
-                    while( BTN1 == 0 );
-                    Lcd_Clear();
-                    Lcd_Set_Cursor(1, 1);
-                    Lcd_Write_String("Buzzer bien!");
-                    Lcd_Set_Cursor(2, 1);
-                    Lcd_Write_String("Init test Buzzer");
-                    __delay_ms(1000);
-                    ESTADO_APP = TEST_COMPLETE;
-                }
-                
-                if ( BTN2 == 0 ) {
-                    __delay_ms(10);
-                    while( BTN1 == 0 );
-                    Lcd_Clear();
-                    Lcd_Set_Cursor(1, 1);
-                    Lcd_Write_String("Buzzer mal!");
-                    Lcd_Set_Cursor(2, 1);
-                    Lcd_Write_String("Init test Buzzer");
-                    __delay_ms(1000);
-                    ESTADO_APP = TEST_COMPLETE;
-                }              
-                break;
+//            case TEST_BUZZER:
+//                // Testeando buzzer
+//                Lcd_Clear();
+//                Lcd_Set_Cursor(1, 1);
+//                Lcd_Write_String("Relays func?...");
+//                //Message_Lcd_Ok();
+//                
+//                if ( BTN0 == 0 ) {
+//                    __delay_ms(10);
+//                    while( BTN0 == 0 );
+//                    LATEbits.LATE2 = ~LATEbits.LATE2;
+//                }
+//                
+//                if ( BTN1 == 0 ) {
+//                    __delay_ms(10);
+//                    while( BTN1 == 0 );
+//                    Lcd_Clear();
+//                    Lcd_Set_Cursor(1, 1);
+//                    Lcd_Write_String("Buzzer bien!");
+//                    Lcd_Set_Cursor(2, 1);
+//                    Lcd_Write_String("Init test Buzzer");
+//                    __delay_ms(1000);
+//                    ESTADO_APP = TEST_COMPLETE;
+//                }
+//                
+//                if ( BTN2 == 0 ) {
+//                    __delay_ms(10);
+//                    while( BTN1 == 0 );
+//                    Lcd_Clear();
+//                    Lcd_Set_Cursor(1, 1);
+//                    Lcd_Write_String("Buzzer mal!");
+//                    Lcd_Set_Cursor(2, 1);
+//                    Lcd_Write_String("Init test Buzzer");
+//                    __delay_ms(1000);
+//                    ESTADO_APP = TEST_COMPLETE;
+//                }              
+//                break;
                 
                 
                 
@@ -275,7 +243,7 @@ int main(void) {
 
 void Message_Lcd_ok(void) {
     Lcd_Set_Cursor(2, 1);
-    Lcd_Write_String("ok  BTN1 : BTN2");
+    Lcd_Write_String("ok ? BTN1 : BTN2");
 }
 
 

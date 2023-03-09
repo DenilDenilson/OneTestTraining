@@ -8413,7 +8413,7 @@ _Bool btn0_pushed = 0;
 _Bool btn1_pushed = 0;
 _Bool btn2_pushed = 0;
 _Bool btn3_pushed = 0;
-_Bool two_buttons_pushed = 0;
+_Bool continue_test = 0;
 
 char strButtons[20];
 
@@ -8519,55 +8519,21 @@ int main(void) {
             case 3:
 
                 LATD = 0xff;
-                _delay((unsigned long)((2000)*(8000000UL/4000.0)));
 
-                while ( PORTBbits.RB1 != 0 || PORTBbits.RB2 != 0 ) {
+                if ( PORTBbits.RB1 == 0 || PORTBbits.RB2 == 0) {
 
-                    for (int i = 0; i <= 7; i++) {
-                        LATD = ( 1 << i );
-                        _delay((unsigned long)((250)*(8000000UL/4000.0)));
-                    }
+                    ESTADO_APP = 4;
 
-
-                    for (int i = 0; i <= 7; i++) {
-                        LATD = ( 0 << i );
-                        _delay((unsigned long)((250)*(8000000UL/4000.0)));
-                    }
-
-
-                    _delay((unsigned long)((100)*(8000000UL/4000.0)));
-                }
-
-                if ( PORTBbits.RB1 == 0 ) {
-                    _delay((unsigned long)((10)*(8000000UL/4000.0)));
-                    while( PORTBbits.RB1 == 0 );
                     Lcd_Clear();
                     Lcd_Set_Cursor(1, 1);
-                    Lcd_Write_String("Leds correctos");
-                    Lcd_Set_Cursor(2, 1);
-                    Lcd_Write_String("Init test Relays");
-                    _delay((unsigned long)((1000)*(8000000UL/4000.0)));
-                    ESTADO_APP = 4;
+                    Lcd_Write_String("Relays func?...");
+                    Message_Lcd_ok();
+                    _delay((unsigned long)((1500)*(8000000UL/4000.0)));
                 }
 
-                if ( PORTBbits.RB2 == 0 ) {
-                    _delay((unsigned long)((10)*(8000000UL/4000.0)));
-                    while( PORTBbits.RB1 == 0 );
-                    Lcd_Clear();
-                    Lcd_Set_Cursor(1, 1);
-                    Lcd_Write_String("Leds incorrectos");
-                    Lcd_Set_Cursor(2, 1);
-                    Lcd_Write_String("Init test Relays");
-                    _delay((unsigned long)((1000)*(8000000UL/4000.0)));
-                    ESTADO_APP = 4;
-                }
                 break;
 
             case 4:
-
-                Lcd_Clear();
-                Lcd_Set_Cursor(1, 1);
-                Lcd_Write_String("Relays func?...");
 
 
                 if ( PORTBbits.RB0 == 0 ) {
@@ -8662,7 +8628,7 @@ int main(void) {
 
 void Message_Lcd_ok(void) {
     Lcd_Set_Cursor(2, 1);
-    Lcd_Write_String("ok  BTN1 : BTN2");
+    Lcd_Write_String("ok ? BTN1 : BTN2");
 }
 
 
