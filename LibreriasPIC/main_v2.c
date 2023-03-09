@@ -22,9 +22,13 @@ void Message_Lcd_ok(void); // Messate to question is all ok in the test
 
 // Variables
 uint8_t ESTADO_APP;
+bool btn0_pushed = false;
 bool btn1_pushed = false;
 bool btn2_pushed = false;
+bool btn3_pushed = false;
 bool two_buttons_pushed = false;
+
+char strButtons[20];
 
 int main(void) {
     
@@ -67,17 +71,23 @@ int main(void) {
                 
                 ESTADO_APP = TEST_BUTTONS;
                 
+                // Testeando los botones
+                Lcd_Clear();
+                Lcd_Set_Cursor(1, 1);
+                Lcd_Write_String("Buttons test");
+                Lcd_Set_Cursor(2, 1);
+                Lcd_Write_String("Push any button");
+                __delay_ms(1500);
+                
                 break;
                 
             case TEST_BUTTONS:
                 
-                
-                // Testeando los botones
-                Lcd_Clear();
-                Lcd_Set_Cursor(1, 1);
-                Lcd_Write_String("BT0 ok");
-                Lcd_Set_Cursor(2, 1);
-                Lcd_Write_String("BT1: _ || BT2: _");
+                if ( BTN0 == 0 ) {
+                    __delay_ms(10);
+                    while( BTN0 == 0 );
+                    btn0_pushed = true;
+                }
                 
                 if ( BTN1 == 0 ) {
                     __delay_ms(10);
@@ -91,58 +101,38 @@ int main(void) {
                     btn2_pushed = true;
                 }
                 
-                if ( btn1_pushed || btn2_pushed ) {
+                if ( BTN3 == 0 ) {
+                    __delay_ms(10);
+                    while( BTN1 == 0 );
+                    btn3_pushed = true;
+                }
+                
+                sprintf(strButtons, "%d, %d, %d, %d", btn0_pushed, btn1_pushed, btn2_pushed, btn3_pushed);
+                Lcd_Clear();
+                Lcd_Set_Cursor(2, 1);
+                Lcd_Write_String(strButtons);
+                
+                if ( btn0_pushed && btn1_pushed && btn2_pushed && btn3_pushed ) {
+                    __delay_ms(500);
                     Lcd_Clear();
                     Lcd_Set_Cursor(1, 1);
-                    Lcd_Write_String("BTN1: _");
-                    Lcd_Set_Cursor(2, 1);
-                    Lcd_Write_String("BTn2: _");
-                    if (btn1_pushed) {
-                        Lcd_Clear();
-                        Lcd_Set_Cursor(1, 1);
-                        Lcd_Write_String("BTN1: :)");
-                        Lcd_Set_Cursor(2, 1);
-                        Lcd_Write_String("BTn2: _");
-                    }
-                    if (btn2_pushed) {
-                        Lcd_Clear();
-                        Lcd_Set_Cursor(1, 1);
-                        Lcd_Write_String("BTN1: _");
-                        Lcd_Set_Cursor(2, 1);
-                        Lcd_Write_String("BTn2: :)");
-                    }
-                    if (btn2_pushed && btn2_pushed) {
-                        Lcd_Clear();
-                        Lcd_Set_Cursor(1, 1);
-                        Lcd_Write_String("BTN1: :)");
-                        Lcd_Set_Cursor(2, 1);
-                        Lcd_Write_String("BTn2: :)");
-                        
-                        two_buttons_pushed = true;
-                    }
+                    Lcd_Write_String("All buttons ok");
+                    __delay_ms(500);
                     
-                    if ( two_buttons_pushed ) {
-                        Lcd_Clear();
-                        Lcd_Set_Cursor(1, 1);
-                        Lcd_Write_String("Botones check");
-                        Lcd_Set_Cursor(2, 1);
-                        Lcd_Write_String("Init test leds");
-                        __delay_ms(1000);
-                        
-                        ESTADO_APP = TEST_LEDS;
-                    }
-                    
-                    
+                    ESTADO_APP = TEST_LEDS;
+                    // Testeando leds
+                    Lcd_Clear();
+                    Lcd_Set_Cursor(1, 1);
+                    Lcd_Write_String("Probando leds...");
+                    Message_Lcd_ok();
                 }
                 
                 break;
                 
             case TEST_LEDS:
-                // Testeando leds
-                Lcd_Clear();
-                Lcd_Set_Cursor(1, 1);
-                Lcd_Write_String("Probando leds...");
-                //Message_Lcd_Ok();
+                
+                LATD = 0xff;
+                __delay_ms(2000);
                 
                 while ( BTN1 != 0 || BTN2 != 0 ) {
                     // Encendiendo leds

@@ -8409,9 +8409,13 @@ void Message_Lcd_ok(void);
 
 
 uint8_t ESTADO_APP;
+_Bool btn0_pushed = 0;
 _Bool btn1_pushed = 0;
 _Bool btn2_pushed = 0;
+_Bool btn3_pushed = 0;
 _Bool two_buttons_pushed = 0;
+
+char strButtons[20];
 
 int main(void) {
 
@@ -8454,17 +8458,23 @@ int main(void) {
 
                 ESTADO_APP = 2;
 
+
+                Lcd_Clear();
+                Lcd_Set_Cursor(1, 1);
+                Lcd_Write_String("Buttons test");
+                Lcd_Set_Cursor(2, 1);
+                Lcd_Write_String("Push any button");
+                _delay((unsigned long)((1500)*(8000000UL/4000.0)));
+
                 break;
 
             case 2:
 
-
-
-                Lcd_Clear();
-                Lcd_Set_Cursor(1, 1);
-                Lcd_Write_String("BT0 ok");
-                Lcd_Set_Cursor(2, 1);
-                Lcd_Write_String("BT1: _ || BT2: _");
+                if ( PORTBbits.RB0 == 0 ) {
+                    _delay((unsigned long)((10)*(8000000UL/4000.0)));
+                    while( PORTBbits.RB0 == 0 );
+                    btn0_pushed = 1;
+                }
 
                 if ( PORTBbits.RB1 == 0 ) {
                     _delay((unsigned long)((10)*(8000000UL/4000.0)));
@@ -8478,58 +8488,38 @@ int main(void) {
                     btn2_pushed = 1;
                 }
 
-                if ( btn1_pushed || btn2_pushed ) {
+                if ( PORTBbits.RB3 == 0 ) {
+                    _delay((unsigned long)((10)*(8000000UL/4000.0)));
+                    while( PORTBbits.RB1 == 0 );
+                    btn3_pushed = 1;
+                }
+
+                sprintf(strButtons, "%d, %d, %d, %d", btn0_pushed, btn1_pushed, btn2_pushed, btn3_pushed);
+                Lcd_Clear();
+                Lcd_Set_Cursor(2, 1);
+                Lcd_Write_String(strButtons);
+
+                if ( btn0_pushed && btn1_pushed && btn2_pushed && btn3_pushed ) {
+                    _delay((unsigned long)((500)*(8000000UL/4000.0)));
                     Lcd_Clear();
                     Lcd_Set_Cursor(1, 1);
-                    Lcd_Write_String("BTN1: _");
-                    Lcd_Set_Cursor(2, 1);
-                    Lcd_Write_String("BTn2: _");
-                    if (btn1_pushed) {
-                        Lcd_Clear();
-                        Lcd_Set_Cursor(1, 1);
-                        Lcd_Write_String("BTN1: :)");
-                        Lcd_Set_Cursor(2, 1);
-                        Lcd_Write_String("BTn2: _");
-                    }
-                    if (btn2_pushed) {
-                        Lcd_Clear();
-                        Lcd_Set_Cursor(1, 1);
-                        Lcd_Write_String("BTN1: _");
-                        Lcd_Set_Cursor(2, 1);
-                        Lcd_Write_String("BTn2: :)");
-                    }
-                    if (btn2_pushed && btn2_pushed) {
-                        Lcd_Clear();
-                        Lcd_Set_Cursor(1, 1);
-                        Lcd_Write_String("BTN1: :)");
-                        Lcd_Set_Cursor(2, 1);
-                        Lcd_Write_String("BTn2: :)");
+                    Lcd_Write_String("All buttons ok");
+                    _delay((unsigned long)((500)*(8000000UL/4000.0)));
 
-                        two_buttons_pushed = 1;
-                    }
+                    ESTADO_APP = 3;
 
-                    if ( two_buttons_pushed ) {
-                        Lcd_Clear();
-                        Lcd_Set_Cursor(1, 1);
-                        Lcd_Write_String("Botones check");
-                        Lcd_Set_Cursor(2, 1);
-                        Lcd_Write_String("Init test leds");
-                        _delay((unsigned long)((1000)*(8000000UL/4000.0)));
-
-                        ESTADO_APP = 3;
-                    }
-
-
+                    Lcd_Clear();
+                    Lcd_Set_Cursor(1, 1);
+                    Lcd_Write_String("Probando leds...");
+                    Message_Lcd_ok();
                 }
 
                 break;
 
             case 3:
 
-                Lcd_Clear();
-                Lcd_Set_Cursor(1, 1);
-                Lcd_Write_String("Probando leds...");
-
+                LATD = 0xff;
+                _delay((unsigned long)((2000)*(8000000UL/4000.0)));
 
                 while ( PORTBbits.RB1 != 0 || PORTBbits.RB2 != 0 ) {
 
