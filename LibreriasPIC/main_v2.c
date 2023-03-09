@@ -5,6 +5,7 @@
 #define BTN0            PORTBbits.RB0
 #define BTN1            PORTBbits.RB1
 #define BTN2            PORTBbits.RB2
+#define BTN3            PORTBbits.RB3
 
 #define TEST_INIT       1
 #define TEST_BUTTONS    2
@@ -42,16 +43,30 @@ int main(void) {
                 // Inicializando el testeo
                 Lcd_Clear();
                 Lcd_Set_Cursor(1, 1);
-                Lcd_Write_String("Push BT0 to init");
+                Lcd_Write_String("starting test");
                 Lcd_Set_Cursor(2, 1);
-                Lcd_Write_String("ok ? BTN1 : BTN2");
-                Message_Lcd_ok();
+                Lcd_Write_String("of trainer");
+                __delay_ms(1500);
+                Lcd_Clear();
+                Lcd_Set_Cursor(1, 1);
+                Lcd_Write_String("In ...");
+                // Lcd_Set_Cursor(2, 1);
                 
-                if ( BTN0 == 0 ) {
-                    __delay_ms(10);
-                    while( BTN0 == 0);
-                    ESTADO_APP = TEST_BUTTONS;
+                for ( int i = 3; i > 0; i-- ) {
+                    char strI[20];
+                    for ( int j = 1; j < 17; j++ ) {
+                        Lcd_Set_Cursor(1, 1);
+                        Lcd_Write_String("In ...");
+                        Lcd_Set_Cursor(2, j);
+                        sprintf(strI, "%d", i);
+                        Lcd_Write_String(strI);
+                        __delay_ms(200);
+                        Lcd_Clear();
+                    }
                 }
+                
+                ESTADO_APP = TEST_BUTTONS;
+                
                 break;
                 
             case TEST_BUTTONS:
@@ -285,10 +300,12 @@ void Port_Init(void) {
     ANSELBbits.ANSB0 = 0; // Pines digitales
     ANSELBbits.ANSB1 = 0;
     ANSELBbits.ANSB2 = 0;
+    ANSELBbits.ANSB3 = 0;
     
     TRISBbits.RB0 = 1; // Entrada digital
     TRISBbits.RB1 = 1;
     TRISBbits.RB2 = 1;
+    TRISBbits.RB3 = 1;
     
     ANSELBbits.ANSB4 = 0;
     TRISBbits.RB4 = 0;

@@ -8402,7 +8402,7 @@ void Lcd_Write_String(unsigned char *a);
 void Lcd_Shift_Right( void );
 void Lcd_Shift_Left( void );
 # 2 "LibreriasPIC/main_v2.c" 2
-# 18 "LibreriasPIC/main_v2.c"
+# 19 "LibreriasPIC/main_v2.c"
 void OSCILADOR_Init(void);
 void Port_Init(void);
 void Message_Lcd_ok(void);
@@ -8430,16 +8430,30 @@ int main(void) {
 
                 Lcd_Clear();
                 Lcd_Set_Cursor(1, 1);
-                Lcd_Write_String("Push BT0 to init");
+                Lcd_Write_String("starting test");
                 Lcd_Set_Cursor(2, 1);
-                Lcd_Write_String("ok ? BTN1 : BTN2");
-                Message_Lcd_ok();
+                Lcd_Write_String("of trainer");
+                _delay((unsigned long)((1500)*(8000000UL/4000.0)));
+                Lcd_Clear();
+                Lcd_Set_Cursor(1, 1);
+                Lcd_Write_String("In ...");
 
-                if ( PORTBbits.RB0 == 0 ) {
-                    _delay((unsigned long)((10)*(8000000UL/4000.0)));
-                    while( PORTBbits.RB0 == 0);
-                    ESTADO_APP = 2;
+
+                for ( int i = 3; i > 0; i-- ) {
+                    char strI[20];
+                    for ( int j = 1; j < 17; j++ ) {
+                        Lcd_Set_Cursor(1, 1);
+                        Lcd_Write_String("In ...");
+                        Lcd_Set_Cursor(2, j);
+                        sprintf(strI, "%d", i);
+                        Lcd_Write_String(strI);
+                        _delay((unsigned long)((200)*(8000000UL/4000.0)));
+                        Lcd_Clear();
+                    }
                 }
+
+                ESTADO_APP = 2;
+
                 break;
 
             case 2:
@@ -8673,10 +8687,12 @@ void Port_Init(void) {
     ANSELBbits.ANSB0 = 0;
     ANSELBbits.ANSB1 = 0;
     ANSELBbits.ANSB2 = 0;
+    ANSELBbits.ANSB3 = 0;
 
     TRISBbits.RB0 = 1;
     TRISBbits.RB1 = 1;
     TRISBbits.RB2 = 1;
+    TRISBbits.RB3 = 1;
 
     ANSELBbits.ANSB4 = 0;
     TRISBbits.RB4 = 0;
